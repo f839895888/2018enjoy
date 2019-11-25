@@ -22,12 +22,13 @@
         </p>
         <div class="yzm">
             <!-- <yzhk></yzhk>  -->
+            <SlideVerify></SlideVerify>
         </div>
         <mt-button class="go" @click="reg">提交注册信息</mt-button>
     </div>
 </template>
 <script>
-import yzhk from "./yzhk.vue"
+import SlideVerify from "./SlideVerify.vue"
 export default {
     data() {
         return {
@@ -39,7 +40,7 @@ export default {
         }
     },
     components:{
-    "yzhk":yzhk
+    "SlideVerify":SlideVerify
     },
     // 添加函数reg，完成注册
     methods:{
@@ -91,8 +92,6 @@ export default {
                 }else{
                     this.$toast("注册失败")
                 }
-
-            
             })
             .catch(err=>{
                 console.log(err)
@@ -106,6 +105,7 @@ export default {
 <style scoped>
     .enjoy-reg{
         padding-top: 30px;
+        text-align: center;
     }
     .enjoy-reg .reg{
         text-align: center;
@@ -126,7 +126,7 @@ export default {
             color: #2c3038;
             border-radius: 2px;
             border: 2px solid #bdc0c5;
-            padding: 8px;
+            padding: 6px;
      }
      .enjoy-reg input{
          margin-bottom: 20px;
@@ -134,6 +134,6 @@ export default {
      .go{
          background: orangered;
          color: aliceblue;
-         margin-top: 20px;
+         margin-top: 15px;
              }
 </style>
