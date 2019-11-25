@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="text">
             <div class="main-app">
         <div class="header">
             <div class="header-top">
@@ -96,6 +96,9 @@ export default {
 </script>
 
 <style>
+#text{
+    text-align: center !important;
+}
 .main-app{
     position:fixed;
     width:100%;

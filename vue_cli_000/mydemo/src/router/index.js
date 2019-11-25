@@ -17,6 +17,7 @@ import Router from 'vue-router'
 //http://localhost:8080/#/GerenG
 //http://localhost:8080/#/GerenR
 //http://localhost:8080/#/GerenS
+//http://localhost:8080/#/SlideVerify
 // 父组件
 import  index from "../components/index.vue"
 // 为登录组件配置访问路径 /login
@@ -35,6 +36,8 @@ import Space from  "../components/enjoy/Space.vue"
 import GerenR from "../components/enjoy/GerenR.vue"
 import GerenG from "../components/enjoy/GerenG.vue"
 import GerenS from "../components/enjoy/GerenS.vue"
+// 验证码
+import SlideVerify from "../components/enjoy/SlideVerify.vue"
 Vue.use(Router)
 
 export default new Router({
@@ -56,6 +59,7 @@ export default new Router({
 		{path:'/GerenR',component:GerenR},
     {path:'/GerenG',component:GerenG},
     {path:'/GerenS',component:GerenS},
+    {path:'/SlideVerify',component:SlideVerify},
     // 父组件路径
     {path:'/',component:index},
  

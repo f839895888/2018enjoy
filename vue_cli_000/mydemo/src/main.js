@@ -41,8 +41,9 @@ import 'vant/lib/index.css';
 import VueTouch from "vue-touch";
 Vue.use(VueTouch, {name:'v-touch'})
 Vue.use(Vant)
-
-
+// 验证码组件
+import SlideVerify from 'vue-monoplasty-slide-verify';
+Vue.use(SlideVerify);
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
