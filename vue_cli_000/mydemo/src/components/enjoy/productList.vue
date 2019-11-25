@@ -54,6 +54,7 @@ export default {
     /* 1：最外层父元素 弹性布局 */
 .product_app{
     padding:4px;
+    text-align: center;
 }
 .goods{
     padding-bottom: 58px;
