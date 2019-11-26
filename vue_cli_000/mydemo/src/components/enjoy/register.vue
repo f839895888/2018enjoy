@@ -22,7 +22,7 @@
         </p>
         <div class="yzm">
             <!-- <yzhk></yzhk>  -->
-            <SlideVerify></SlideVerify>
+            <SlideVerify ref="getdata"></SlideVerify>
         </div>
         <mt-button class="go" @click="reg">提交注册信息</mt-button>
     </div>
@@ -75,7 +75,12 @@ export default {
                 return;
             }
             if(upwd!==cpwd){
-                this.$messagebox("消息","两次密码输入不一致")
+                this.$messagebox("消息","两次密码输入不一致");
+                return;
+            }
+            if(this.$refs.getdata.msg=="验证失败"){
+                this.$messagebox("消息","验证不通过,请重试")
+                return;
             }
             var url = "reg";
             var obj = `uname=${this.uname}&upwd=${this.upwd}&email=${this.email}&phone=${this.phone}`;
@@ -106,6 +111,8 @@ export default {
     .enjoy-reg{
         padding-top: 30px;
         text-align: center;
+        background-image: url(../../../static/bg.png);
+        background-size:100% 100%;
     }
     .enjoy-reg .reg{
         text-align: center;
