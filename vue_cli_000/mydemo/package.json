@@ -22,7 +22,6 @@
   "vue-touch": "^2.0.0-beta.4"
   },
   "devDependencies": {
-<<<<<<< HEAD
     "autoprefixer": "^7.1.2",
     "babel-core": "^6.22.1",
     "babel-helper-vue-jsx-merge-props": "^2.0.3",
@@ -58,7 +57,6 @@
     "webpack-bundle-analyzer": "^2.9.0",
     "webpack-dev-server": "^2.9.1",
     "webpack-merge": "^4.1.0"
-=======
   "autoprefixer": "^7.1.2",
   "babel-core": "^6.22.1",
   "babel-helper-vue-jsx-merge-props": "^2.0.3",
@@ -94,7 +92,6 @@
   "webpack-bundle-analyzer": "^3.6.0",
   "webpack-dev-server": "^2.9.1",
   "webpack-merge": "^4.1.0"
->>>>>>> 2b2c2b5467fbeb7260fc1aa9ff65c269b45220f0
   },
   "engines": {
   "node": ">= 6.0.0",
