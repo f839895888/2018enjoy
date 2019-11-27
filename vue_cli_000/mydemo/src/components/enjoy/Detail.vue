@@ -192,6 +192,7 @@ export default {
       ]
     }
   },
+  props:["lid"],
   methods:{
     onClickIcon() {
       alert("加入购物车");

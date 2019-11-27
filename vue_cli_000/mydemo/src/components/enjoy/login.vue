@@ -79,10 +79,13 @@ export default {
 <style scoped>
    .enjoy-login{
        padding-top: 30px;
+       background-image: url(../../../static/bg.png);
+       text-align: center;
+       background-size:100% 100%;
     }
     .enjoy-login .logo{
         text-align: center;
-        margin-bottom:100px;
+        /* margin-bottom:100px; */
         margin-bottom: 30px;
     }
     .enjoy-login:after{
@@ -143,6 +146,7 @@ export default {
         text-align: center;
         color: #92969c;
         margin-bottom: 55px;
+        padding-bottom:200px;
     }
     .enjoy-login .tip a{
         color: orangered;

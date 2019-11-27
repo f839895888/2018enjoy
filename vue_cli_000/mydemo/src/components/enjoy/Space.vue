@@ -74,14 +74,14 @@
         <v-touch v-on:swipeleft="move1(-1)" v-on:swiperight="move1(1)" tag="div">
          <ul :style="{'margin-left':172.5 * moved2 + 'px'}">
           <li class="top">
-            <router-link to="/storeh">
+            <router-link to="/storeh/1">
                 <img src="http://127.0.0.1:3000/08.jpg" alt="" />
                 <p class="title2">日本料理</p>
                 <p class="subtitle2">10个精品店</p>
             </router-link>
           </li>
           <li class="top">
-            <router-link to="">
+            <router-link to="/storeh/2">
               <img src="http://127.0.0.1:3000/09.jpg" alt="" />
               <p class="title2">精选西餐</p>
               <p class="subtitle2">10个精品店</p>
