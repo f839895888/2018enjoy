@@ -21,10 +21,10 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
-    // { path: '/',  },
+    { path: '/',  },
     // 登录路径
-    {path:'/storeh',component:Storeh},
-    {path:'/detail',component:Detail},
+    {path:'/storeh/:fid',component:Storeh,props:true},
+    {path:'/detail/:lid',component:Detail,props:true},
     {path:'/space',component:Space},
     {path:'/login',component:login},
     {path:'/FiftBox',component:FiftBox},
