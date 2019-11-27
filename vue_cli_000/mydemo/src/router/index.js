@@ -18,7 +18,7 @@ import Router from 'vue-router'
 //http://localhost:8080/#/GerenR
 //http://localhost:8080/#/GerenS
 // 父组件
-import  index from "../components/index.vue"
+import index from "../components/index.vue"
 // 为登录组件配置访问路径 /login
 import login from "../components/enjoy/login.vue"
 // 临时
@@ -41,7 +41,7 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
-    { path: '/',  },
+    // { path: '/',  },
     // 登录路径
     {path:'/storeh/:fid',component:Storeh,props:true},
     {path:'/detail/:lid',component:Detail,props:true},
