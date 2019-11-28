@@ -173,11 +173,11 @@ server.get("/productt",(req,res)=>{
       res.send(result[0]);
     })
   }else{
-    res.send("错误");
+    res.send({code:-1,msg:"无商品编号"});
   }
  })
 
-//  商品显详情页 猜你喜欢接口
+//  商品列表页面 猜你喜欢接口
  server.get("/productd",(req,res)=>{
   
   // var pro={};
@@ -212,4 +212,39 @@ server.get("/store",(req,res)=>{
 })
 
 
+//功能：查询餐厅及食物详情
+server.get("/foodDetail",(req,res)=>{
+  var lid=req.query.lid;
+  var output={
+    product:{},
+    liangdian:[],
+    pics:[],
+    menu:[]
+  }
+if(lid!==undefined){
+  var sql1=`select * from ey_details where lid=?`;
+  pool.query(sql1,[lid],(err,result)=>{
+    if(err) console.log(err);
+    output.product=result[0];
+    var sql2=`select * from ey_liang where ldid=?`;
+    pool.query(sql2,[lid],(err,result)=>{
+      if(err) console.log(err);
+      output.liangdian=result;
+      var sql3=`select * from ey_lunbo where family_id=?`
+      pool.query(sql3,[lid],(err,result)=>{
+        if(err) console.log(err);
+        output.pics=result;
+        var sql4=`select * from ey_menu where fid=?`
+      pool.query(sql4,[lid],(err,result)=>{
+        if(err) console.log(err);
+        output.menu=result;
+        res.send(output);
+      })
+    })
+  })
+})
+}else{
+  res.send(output);
+}
+})
 

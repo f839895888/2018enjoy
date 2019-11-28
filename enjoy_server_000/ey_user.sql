@@ -1,67 +1,67 @@
-SET NAMES UTF8;
-DROP DATABASE IF EXISTS ey;
-CREATE DATABASE ey CHARSET=UTF8;
+-- SET NAMES UTF8;
+-- DROP DATABASE IF EXISTS ey;
+-- CREATE DATABASE ey CHARSET=UTF8;
 USE ey;
 
-CREATE TABLE ey_user(
-  id INT PRIMARY KEY AUTO_INCREMENT,
-  uname VARCHAR(32) DEFAULT NULL,
-  upwd  VARCHAR(32) DEFAULT NULL,
-  email VARCHAR(64) DEFAULT NULL,
-  phone VARCHAR(16) DEFAULT NULL
-);
+-- CREATE TABLE ey_user(
+--   id INT PRIMARY KEY AUTO_INCREMENT,
+--   uname VARCHAR(32) DEFAULT NULL,
+--   upwd  VARCHAR(32) DEFAULT NULL,
+--   email VARCHAR(64) DEFAULT NULL,
+--   phone VARCHAR(16) DEFAULT NULL
+-- );
 
-INSERT INTO ey_user VALUES
-(null,'dangdang',123456,'dangdang@qq.com',13588888888),
-(null,'dongdong',123456,'dongdong@qq.com',13566666666),
-(null,'ranran',123456,'ranran@qq.com',13512345678),
-(null,'taotao',123456,'taotao@qq.com',13587654321);
+-- INSERT INTO ey_user VALUES
+-- (null,'dangdang',123456,'dangdang@qq.com',13588888888),
+-- (null,'dongdong',123456,'dongdong@qq.com',13566666666),
+-- (null,'ranran',123456,'ranran@qq.com',13512345678),
+-- (null,'taotao',123456,'taotao@qq.com',13587654321);
 
-#主页商品列表
+-- #主页商品列表
 
-CREATE TABLE ey_index_hotel(
-  pid int(11) NOT NULL,
-  ppublic varchar(128) DEFAULT NULL,
-  title varchar(64) DEFAULT NULL,
-  ftitle varchar(32) DEFAULT NULL
-);
-INSERT INTO ey_index_hotel VALUES 
-(1,'1_1.jpg','一元居酒屋 MOTO 单人鳗鱼饭','当日现杀鲜活鳗鱼入料'),
-(2,'2_1.jpg','馥泰阁海鲜餐吧海鲜饭双人餐','粤式古早味的海鲜餐吧'),
-(3,'3_1.jpg','北京希尔顿酒店东方路一号美餐厅单人餐','低至4折的星级体验'),
-(4,'4_1.jpg','北京瑰丽酒店赤火锅 Red Bowl 火锅菜单','深夜及周末的超值体验'),
-(5,'5_1.jpg','JUSTIN 文秀新品晚餐套餐','新加坡总理御厨送上精致法餐'),
-(6,'6_1.jpg','北京国际饭店星光汇旋转餐厅单人餐','京城“老派”星级西餐体验'),
-(7,'7_1.jpg','Tiger Pancake House 全天早午餐','阳光早午餐开启活力一天'),
-(8,'8_1.jpg','CINKER PICTURES 三克映画单人 Brunch','随意搭配的三道式 Brunch');
-#http://127.0.0.1:3000/1_1.jpg
-#http://127.0.0.1:3000/2_1.jpg
-
-
+-- CREATE TABLE ey_index_hotel(
+--   pid int(11) NOT NULL,
+--   ppublic varchar(128) DEFAULT NULL,
+--   title varchar(64) DEFAULT NULL,
+--   ftitle varchar(32) DEFAULT NULL
+-- );
+-- INSERT INTO ey_index_hotel VALUES 
+-- (1,'1_1.jpg','一元居酒屋 MOTO 单人鳗鱼饭','当日现杀鲜活鳗鱼入料'),
+-- (2,'2_1.jpg','馥泰阁海鲜餐吧海鲜饭双人餐','粤式古早味的海鲜餐吧'),
+-- (3,'3_1.jpg','北京希尔顿酒店东方路一号美餐厅单人餐','低至4折的星级体验'),
+-- (4,'4_1.jpg','北京瑰丽酒店赤火锅 Red Bowl 火锅菜单','深夜及周末的超值体验'),
+-- (5,'5_1.jpg','JUSTIN 文秀新品晚餐套餐','新加坡总理御厨送上精致法餐'),
+-- (6,'6_1.jpg','北京国际饭店星光汇旋转餐厅单人餐','京城“老派”星级西餐体验'),
+-- (7,'7_1.jpg','Tiger Pancake House 全天早午餐','阳光早午餐开启活力一天'),
+-- (8,'8_1.jpg','CINKER PICTURES 三克映画单人 Brunch','随意搭配的三道式 Brunch');
+-- #http://127.0.0.1:3000/1_1.jpg
+-- #http://127.0.0.1:3000/2_1.jpg
 
 
 
-CREATE TABLE ey_hotel(
-  lid int(11) NOT NULL,
-  title varchar(128) DEFAULT NULL,
-  price decimal(10,2) DEFAULT NULL,
-  apublic varchar(128) DEFAULT NULL,
-  bpublic varchar(128) DEFAULT NULL,
-  cpublic varchar(128) DEFAULT NULL,
-  dpublic varchar(128) DEFAULT NULL,
-  epublic varchar(128) DEFAULT NULL,
-  fpublic varchar(128) DEFAULT NULL,
-  gpublic varchar(128) DEFAULT NULL,
-  hpublic varchar(128) DEFAULT NULL
-);
-
-INSERT INTO ey_hotel VALUES
-(1,'一元居酒屋 MOTO 单人鳗鱼饭',135,'public/1_1.jpg','public/1_2.jpg','public/1_3.jpg','public/1_4.jpg','public/1_5.jpg','public/1_6.jpg','public/1_7.jpg','public/2_8.jpg'),
-(2,'馥泰阁海鲜餐吧海鲜饭双人餐',235,'public/2_1.jpg','public/2_2.jpg','public/2_3.jpg','public/2_4.jpg','public/2_5.jpg','public/2_6.jpg','public/2_7.jpg','public/2_8.jpg'), 
-(3,'北京希尔顿酒店东方路一号美餐厅单人餐',335,'public/3_1.jpg','public/3_2.jpg','public/3_3.jpg','public/3_4.jpg','public/3_5.jpg','public/3_6.jpg','public/3_7.jpg','public/3_8.jpg');
 
 
-DROP TABLE IF EXISTS ey_product;
+-- CREATE TABLE ey_hotel(
+--   lid int(11) NOT NULL,
+--   title varchar(128) DEFAULT NULL,
+--   price decimal(10,2) DEFAULT NULL,
+--   apublic varchar(128) DEFAULT NULL,
+--   bpublic varchar(128) DEFAULT NULL,
+--   cpublic varchar(128) DEFAULT NULL,
+--   dpublic varchar(128) DEFAULT NULL,
+--   epublic varchar(128) DEFAULT NULL,
+--   fpublic varchar(128) DEFAULT NULL,
+--   gpublic varchar(128) DEFAULT NULL,
+--   hpublic varchar(128) DEFAULT NULL
+-- );
+
+-- INSERT INTO ey_hotel VALUES
+-- (1,'一元居酒屋 MOTO 单人鳗鱼饭',135,'public/1_1.jpg','public/1_2.jpg','public/1_3.jpg','public/1_4.jpg','public/1_5.jpg','public/1_6.jpg','public/1_7.jpg','public/2_8.jpg'),
+-- (2,'馥泰阁海鲜餐吧海鲜饭双人餐',235,'public/2_1.jpg','public/2_2.jpg','public/2_3.jpg','public/2_4.jpg','public/2_5.jpg','public/2_6.jpg','public/2_7.jpg','public/2_8.jpg'), 
+-- (3,'北京希尔顿酒店东方路一号美餐厅单人餐',335,'public/3_1.jpg','public/3_2.jpg','public/3_3.jpg','public/3_4.jpg','public/3_5.jpg','public/3_6.jpg','public/3_7.jpg','public/3_8.jpg');
+
+
+-- DROP TABLE IF EXISTS ey_product;
 CREATE TABLE ey_product(
   pid int PRIMARY KEY AUTO_INCREMENT,
   title varchar(128) DEFAULT NULL,
@@ -211,3 +211,66 @@ INSERT INTO ey_product VALUES
 '/sheng6.jpg',
 '拥有150余年历史的日本综合性酒类龙头企业',
 '来自日本京都的宝酒造（TaKaRa）是一家有着150余年历史的日本综合性酒类龙头企业。1984年，宝酒造公司率先在日本推出全新低酒精饮料——TaKaRa Can CHU－HI，开创了天然汽酒这一全新饮品。作为日本新一代低酒精饮品的出口代表，风靡全世界。');
+INSERT INTO ey_product VALUES
+(NULL,
+'Mio’s Lab 喵叔的实验室黄标铁盒曲奇',
+'四味集锦的微软酥滑体验',
+222,
+'四味集锦的微软酥滑体验',
+'4%vol',
+'原味*12块 咖啡味*12块 可可味*12块 抹茶味*12块',
+'花知道',
+'云南普者黑',
+'700mL',
+'水，重瓣玫瑰，果葡糖浆，柠檬提取物',
+'28天，开盖即饮',
+'玻璃瓶装，外包装为瓦楞纸盒',
+'常温，避光，防潮，开启后需冷藏',
+'/jiu25.jpg',
+'坚持手作 酥中带软的高级口感',
+'坚持使用昂贵的法国总统黄油和美国蓝钻杏仁粉，每一块曲奇都手工制作，拒绝添加防腐剂香精和人工色素，口感微软酥滑，入口即化，真正酥中带软的高级口感。',
+'/jiu25.jpg',
+'品质严格把关 精选多地食材',
+'优雅风味的法式发酵黄油的典型代表法国总统黄油，颜色是淡淡的乳白色，从生面团到烤制出炉的过程都散发着迷人的香味，口感细腻优雅，优质食材无疑保证了曲奇的香浓美味。');
+INSERT INTO ey_product VALUES
+(NULL,
+'苏格兰芝华士12年威士忌',
+'历经12年的浓郁风味',
+215,
+'苏格兰',
+'4%vol',
+'TaKaRa 白桃果实起泡酒2罐 TaKaRa 荔枝果实起泡酒2罐 TaKaRa 葡萄果实起泡酒2罐',
+'TaKaRa',
+'斯宾塞',
+'700mL',
+'水 果汁 食用酒精 果糖 柠檬酸 二氧化碳 食用香料',
+'12个月',
+'玻璃瓶装',
+'请置于阴凉干燥处，冷藏后饮用更佳',
+'/lunbo1.jpg',
+'精致丰富口感备受推崇',
+'1801年成立于苏格兰阿柏丁的芝华士公司，最开始是一家为顾客提供最优质的货物、粮食和麦芽威士忌的杂货店。随着业务增长，很快赢得了良好的口碑，谷物与麦芽调和威士忌还获得了皇室的认证，同时，他们的酿酒技艺也开始在业内备受推崇。创始人詹姆斯·芝华士坚持认为，保持品牌始终如一的经典口感才是是芝华士的品牌魅力之所在，标志性的馥郁醇厚、丰润顺滑、且回味悠长。芝华士是全世界最早生产调和型威士忌的威士忌生产商，同时也是威士忌三重调和的创造者。目前芝华士全球的年销量已超过五千万瓶，以精致丰富的口感继续征服众人的舌尖。',
+'/jiu20.jpg',
+'历经12年的浓郁风味 在岁月的浸染中熟成',
+'酝酿芝华士12年的斯贝塞酒厂，以风味浓郁的麦芽为酒心，并优雅混合其他成熟的麦芽与谷物类威士忌，调和出这款负有盛名的威士忌杰作。每一瓶芝华士12年都坚持至少在橡木桶中熟成12年，酒液在岁月的浸染中，酝酿出调和型威士忌的艺术口感，成就了“威士忌王子”的美誉。温暖的琥珀色，饱满的秋果香和花蜜香味，标志性的馥郁醇厚，丰润顺滑，且回味悠长。');
+INSERT INTO ey_product VALUES
+(NULL,
+'意大利爱思醍起泡酒',
+'爱思醍协会信誉保证',
+88,
+'意大利',
+'4%vol',
+'TaKaRa 白桃果实起泡酒2罐 TaKaRa 荔枝果实起泡酒2罐 TaKaRa 葡萄果实起泡酒2罐',
+'TaKaRa',
+'意大利卡萨维尼克拉马朗科风酒庄',
+'700mL',
+'水 果汁 食用酒精 果糖 柠檬酸 二氧化碳 食用香料',
+'12个月',
+'玻璃瓶装',
+'请置于阴凉干燥处，冷藏后饮用更佳',
+'/lunbo1.jpg',
+'爱思醍协会逾80年的信誉保证',
+'1932年正式成立的爱思醍甜汽酒保护协会，旨在保护爱思醍的品牌、指定产地、葡萄种类、生产技术和产品类型。爱思醍起泡酒出色地保留了刚采摘的新鲜葡萄的芳香和味道，开瓶即散发麝香般的香味，起泡活跃细密，并带有天然平衡的甜味，较低精度即使日常小酌也十分惬意。',
+'/jiu21.jpg',
+'由莫斯卡托酿制的唯一保证法定产区酒',
+'DOCG 是意大利特级法定产区的最高级，相比于 DOC 级别，DOCG 级起泡酒更是在葡萄产地、葡萄品种、种植方法、种植位置、酿造方法、葡萄酒最少产量等方面都十分严格的要求。爱思醍起泡酒采用意大利著名葡萄品种莫斯卡托酿造，是此种葡萄酿制的唯一保证法定产区酒。');

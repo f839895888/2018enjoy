@@ -100,10 +100,10 @@
       <div class="a5_1">
         <h3 class="h333">亮点</h3>
         <div class="a5_2">
-          <img src="http://127.0.0.1:3000/lunbo1.jpg" alt />
+          <img :src="`http://localhost:3000${obj.bsimg}`" alt />
           <p>{{obj.bstitle}}</p>
           <p>{{obj.bscontent}}</p>
-          <img src="http://127.0.0.1:3000/lunbo2.jpg" alt />
+          <img :src="`http://localhost:3000${obj.bsimgs}`" alt />
           <p>{{obj.bstitles}}</p>
           <p>{{obj.bscontents}}</p>
         </div>
@@ -169,13 +169,14 @@ export default {
     
   },
   props:["pid"],
-  
   methods: {
     //功能 请求单个商品详情数据
      loadMore(){
-       var url="productt/?pid=1";
-      this.axios.get(url).then(res=>{
-        // console.log(res.data)
+       var url="productt";
+      this.axios.get(url,{
+        params:{pid:this.pid}
+      }).then(res=>{
+        console.log(res.data)
         this.obj=res.data;
         // console.log(obj)
       });
@@ -200,6 +201,9 @@ export default {
 </script>
 
 <style scoped>
+.van-swipe {
+  height: 254px;
+}
 * {
   margin: 0;
   padding: 0;

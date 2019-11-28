@@ -137,15 +137,15 @@
           <div class="desc">本周上架10款精品，10款新品</div>
           <a href="javascript:;" class="more">查看更多</a>
           <ul>
-            <li>
-              <a href="javascript:;"><img src="http://127.0.0.1:3000/12.jpg"/></a>
+            <li v-for="(p,i) of p1" :key="i">
+              <router-link :to="`/DetailP/${p.pid}`"><img :src="`http://127.0.0.1:3000${p.bsimg}`"/></router-link>
+            </li>
+            <!-- <li>
+               <router-link to="/DetailP/2"><img src="http://127.0.0.1:3000/13.jpg"/></router-link>
             </li>
             <li>
-               <a href="javascript:;"><img src="http://127.0.0.1:3000/13.jpg"/></a>
-            </li>
-            <li>
-                <a href="javascript:;"><img src="http://127.0.0.1:3000/14.jpg"/></a>
-            </li>
+                <router-link to="/DetailP/3"><img src="http://127.0.0.1:3000/14.jpg"/></router-link>
+            </li> -->
           </ul>
        </div>
      </div>
@@ -156,15 +156,15 @@
           <div class="desc">本周上架10款精品，10款新品</div>
           <a href="javascript:;" class="more">查看更多</a>
           <ul>
-            <li>
-              <a href="javascript:;"><img src="http://127.0.0.1:3000/15.jpg"/></a>
+            <li v-for="(p,i) of p2" :key="i">
+              <router-link :to="`/DetailP/${p.pid}`"><img :src="`http://127.0.0.1:3000${p.bsimg}`"/></router-link>
+            </li>
+            <!-- <li>
+               <router-link to="/DetailP/5"><img src="http://127.0.0.1:3000/16.jpg"/></router-link>
             </li>
             <li>
-               <a href="javascript:;"><img src="http://127.0.0.1:3000/16.jpg"/></a>
-            </li>
-            <li>
-                <a href="javascript:;"><img src="http://127.0.0.1:3000/17.jpg"/></a>
-            </li>
+                <router-link to="/DetailP/6"><img src="http://127.0.0.1:3000/17.jpg"/></router-link>
+            </li> -->
           </ul>
        </div>
      </div>
@@ -175,15 +175,15 @@
           <div class="desc">本周上架10款精品，10款新品</div>
           <a href="javascript:;" class="more">查看更多</a>
           <ul>
-            <li>
-              <a href="javascript:;"><img src="http://127.0.0.1:3000/18.jpg"/></a>
+            <li v-for="(p,i) of p3" :key="i">
+              <router-link :to="`/DetailP/${p.pid}`"><img :src="`http://127.0.0.1:3000${p.bsimg}`"/></router-link>
+            </li>
+            <!-- <li>
+               <router-link to="/DetailP/8"><img src="http://127.0.0.1:3000/19.jpg"/></router-link>
             </li>
             <li>
-               <a href="javascript:;"><img src="http://127.0.0.1:3000/19.jpg"/></a>
-            </li>
-            <li>
-                <a href="javascript:;"><img src="http://127.0.0.1:3000/20.jpg"/></a>
-            </li>
+                <router-link to="/DetailP/9"><img src="http://127.0.0.1:3000/20.jpg"/></router-link>
+            </li> -->
           </ul>
        </div>
      </div>
@@ -193,6 +193,9 @@
 export default {
   data(){
     return {
+      p1:[],
+      p2:[],
+      p3:[],
       number:1,
       moved:0,
       moved2:0,
@@ -206,7 +209,25 @@ export default {
       ]
     }
   },
+  created() {
+    this.load();
+  },
   methods: {
+    load(){
+      this.axios.get("/productd")
+      .then(result=>{
+        console.log(result.data);
+        this.p1=result.data.slice(0,3);
+        this.p2=result.data.slice(3,6);
+        this.p3=result.data.slice(6);
+        console.log(this.p1);
+        console.log(this.p2);
+        console.log(this.p3);
+      })
+      .catch(err=>{
+        console.log(err);
+      })
+    },
     move1(i) {
       this.moved2 += i;
       if(this.moved2<-1){
