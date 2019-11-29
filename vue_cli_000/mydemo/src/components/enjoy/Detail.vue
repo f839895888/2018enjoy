@@ -37,7 +37,7 @@
       <div class="ctitle">美豚 Biton</div>
       <a href="" class="address"> 
         <span class="iconfont"><img src="http://127.0.0.1:3000/addre.png" /></span>
-        <span class="content">朝阳区麦子店大街46号</span>
+        <span class="content"><a href="https://uri.amap.com/marker?position=116.45814514160156,39.8996467590332&name=朝阳区麦子店大街46号">朝阳区麦子店大街46号</a></span>
         <span class="dir"></span>
       </a>
       <a href="" class="address">
@@ -193,7 +193,28 @@ export default {
     }
   },
   props:["lid"],
+  created() {
+    this.loadMore();
+  },
+  watch: {
+    lid(){
+      this.loadMore();
+    }
+  },
   methods:{
+    loadMore(){
+      var url="foodDetail";
+      this.axios.get(url,{
+        params:{
+          lid:this.lid
+        }
+      }).then(res=>{
+        console.log(res.data);
+        
+      }).catch(err=>{
+        console.log(err);
+      })
+    },
     onClickIcon() {
       alert("加入购物车");
     },
