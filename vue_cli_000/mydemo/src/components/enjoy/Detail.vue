@@ -4,8 +4,8 @@
     <!--1.轮播图-->
     <div class="carousel">
         <van-swipe :autoplay="3000">
-          <van-swipe-item v-for="(image, index) in images" :key="index">
-            <img v-lazy="image" />
+          <van-swipe-item v-for="(image, index) in pics" :key="index">
+            <img v-lazy="image.imgUrl" />
           </van-swipe-item>
         </van-swipe>
     </div>
@@ -13,13 +13,13 @@
     <div>
       <div class="info">
            <div class="info-title">
-             <p class="title">美豚 Biton 单人午餐-招牌拉面/饭类定食单人午餐</p>
-             <p class="desc">9款人气定食搭配咖啡、沙拉</p>
+             <p class="title">{{product.title}}</p>
+             <p class="desc">{{product.subtitle}}</p>
              <p class="price">
-               <span class="r-price">38</span>
+               <span class="r-price">{{product.price}}</span>
                <span class="yuan">元</span>
                <span class="wei">/位</span>
-               <span class="shuzi">¥58</span>
+               <span class="shuzi">{{product.yprice}}</span>
                <span class="xian"></span>
                <span class="tui">随时退</span>
              </p>
@@ -34,15 +34,15 @@
     <!--3.商户信息-->
     <div class="store">
       <h3 class="card-title">商户信息</h3>
-      <div class="ctitle">美豚 Biton</div>
+      <div class="ctitle">{{product.pname}}</div>
       <a href="" class="address"> 
         <span class="iconfont"><img src="http://127.0.0.1:3000/addre.png" /></span>
-        <span class="content"><a href="https://uri.amap.com/marker?position=116.45814514160156,39.8996467590332&name=朝阳区麦子店大街46号">朝阳区麦子店大街46号</a></span>
+        <span class="content"><a :href="`https://uri.amap.com/marker?position=${product.locat}&name=${product.addr}`">{{product.addr}}</a></span>
         <span class="dir"></span>
       </a>
       <a href="" class="address">
         <span class="iconfont"><img src="http://127.0.0.1:3000/tel.png" /></span>
-        <span class="tcontent">13031082198</span>
+        <span class="tcontent">{{product.phone}}</span>
         <span class="dir"></span>
       </a>
     </div>
@@ -102,12 +102,12 @@
      <div>
         <div class="normal">
             <h3 class="card-title">亮点</h3>
-            <div class="normal-item clearfix">
-                <img src="http://127.0.0.1:3000/h11.jpg" />
-                <p class="ntitle">多款人气定食选择搭配咖啡、沙拉 呈上“量足质高”的午餐体验</p>
-                <p class="ncontent">擅长猪肉料理的美豚，带来多款人气午餐定食。骨汤浓郁，面条劲道入味的「博多猪骨汤拉面」作为日式拉面中的经典款，口味着实令人难忘；3味可选的「炸猪排定食」，从传统原味到创意柚子汁味，呈现风味各异的肉食体验；更有创意定食「鹅肝烤牛排盖饭」，为你变幻陈旧滋味......搭配咖啡、沙拉，呈现“量足质高”的午餐体验。</p>
+            <div class="normal-item clearfix" v-for="(item,i) of liangdian" :key="i">
+                <img :src="item.picUrl" />
+                <p class="ntitle">{{item.title}}</p>
+                <p class="ncontent">{{item.detail}}</p>
             </div>
-            <div class="normal-item clearfix">
+            <!-- <div class="normal-item clearfix">
                 <img src="http://127.0.0.1:3000/h22.jpg" />
                 <p class="ntitle">虎铁原班人马又一力作 还原超人气日系居酒屋</p>
                 <p class="ncontent">作为京城人气日料店虎铁原班人马打造的又一餐厅，美豚 Biton 为食客呈现混合了和风洋食与日本人气酒吧风格的创意餐厅。主打原料上乘的豚料理和调酒文化，从看似简单的「豚骨拉面」到出自店长兼调酒师铃木先生的各式调酒，皆为你展现出超日系的正宗品味。</p>
@@ -116,7 +116,7 @@
               <img src="http://127.0.0.1:3000/h33.jpg" />
                 <p class="ntitle">多款定食各富特色 ENJOY 独享65折起</p>
                 <p class="ncontent">无论你爱经典还是创新，无论你爱清淡面食还是够味肉食，美豚为你呈上最精彩的饱足午间餐，ENJOY 独享65折起。</p>
-            </div>
+            </div> -->
         </div>
         <div class="gap"></div>
      </div>
@@ -169,10 +169,10 @@
      <!--10.底部导航栏-->
      <div>
         <van-goods-action>
-            <van-goods-action-icon icon="chat-o" text="客服" @click="onClickIcon" />
-            <van-goods-action-icon icon="cart-o" text="购物车" @click="onClickIcon" />
-            <van-goods-action-button type="warning" text="加入购物车" @click="onClickIcon" />
-            <van-goods-action-button type="danger" text="立即购买" @click="onClickButton" />
+            <van-goods-action-icon icon="chat-o" text="客服" @click="kefu()" />
+            <van-goods-action-icon icon="cart-o" text="购物车" @click="findcart()" />
+            <van-goods-action-button type="warning" text="加入购物车" @click="addcart" :data-lid="product.lid" :data-title="product.title" :data-price="product.price" :data-subtitle="product.subtitle" :data-pic="pics[0].imgUrl" />
+            <van-goods-action-button type="danger" text="立即购买" @click="buy()" />
         </van-goods-action>
     </div>
 </div>
@@ -181,15 +181,10 @@
 export default {
   data(){
     return {
-      
-      images: [
-        'http://127.0.0.1:3000/21.jpg',
-        'http://127.0.0.1:3000/22.jpg',
-        'http://127.0.0.1:3000/23.jpg',
-        'http://127.0.0.1:3000/24.jpg',
-        'http://127.0.0.1:3000/25.jpg',
-        'http://127.0.0.1:3000/26.jpg'
-      ]
+      product:{},
+      liangdian:[],
+      pics:[{imgUrl:""}],
+      menu:[]
     }
   },
   props:["lid"],
@@ -202,6 +197,40 @@ export default {
     }
   },
   methods:{
+    addcart(e){//添加购物车
+     var lid=e.target.dataset.lid;
+     var title=e.target.dataset.title;
+     var subtitle=e.target.dataset.subtitle;
+     var price=e.target.dataset.price;
+     var pic=e.target.dataset.pic;
+     //console.log(lid,title,price,spec,pic);
+     var url="/addcart";
+     var obj={
+       lid,title,subtitle,price,pic
+     };
+      this.axios.get(url,{
+       params:obj
+     }).then(res=>{
+       console.log(res);
+       if(res.data.code==-1){
+         this.$toast("请先登录");
+         this.$router.push("/login");
+       }else if(res.data.code==1){
+         this.$toast("添加成功");
+       }
+     }).catch(err=>{
+       console.log(err);
+     })
+    },
+    findcart(){//查看购物车
+     this.$router.push("/GerenG");
+    },
+    kefu(){ //联系客服
+
+    },
+    buy(){ //购买商品
+
+    },
     loadMore(){
       var url="foodDetail";
       this.axios.get(url,{
@@ -210,17 +239,15 @@ export default {
         }
       }).then(res=>{
         console.log(res.data);
-        
+        this.product=res.data.product;
+        this.liangdian=res.data.liangdian;
+        this.pics=res.data.pics;
+        this.menu=res.data.menu;
       }).catch(err=>{
         console.log(err);
       })
     },
-    onClickIcon() {
-      alert("加入购物车");
-    },
-    onClickButton() {
-      alert("立即购买");
-    }
+    
   },
 
 }
@@ -489,7 +516,10 @@ margin-bottom: 18px;
   height: 25px;
   margin-right: 20px;
 }
-.store a{
+.address a{
+  color:#63666b;
+}
+.store .address{
   position: relative;
  display: flex;
  align-items: center;

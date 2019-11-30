@@ -7,9 +7,9 @@
     </van-swipe>
     <van-goods-action class="dibu">
       <van-goods-action-icon icon="chat-o" text="客服" />
-      <van-goods-action-icon icon="cart-o" text="购物车" info="5" />
+      <van-goods-action-icon icon="cart-o" text="购物车" info="5"  @click="findcart()"/>
       <van-goods-action-icon icon="shop-o" text="店铺" info="12" />
-      <van-goods-action-button type="warning" text="加入购物车" />
+      <van-goods-action-button type="warning" text="加入购物车" @click="addcart" :data-lid="obj.pid" :data-title="obj.title" :data-price="obj.price" :data-subtitle="obj.ftitle" :data-pic="'http://127.0.0.1:3000'+obj.bsimg"/>
       <van-goods-action-button type="danger" text="立即购买" />
     </van-goods-action>
     <div class="a1">
@@ -170,6 +170,34 @@ export default {
   },
   props:["pid"],
   methods: {
+    addcart(e){//添加购物车
+     var lid=e.target.dataset.lid;
+     var title=e.target.dataset.title;
+     var subtitle=e.target.dataset.subtitle;
+     var price=e.target.dataset.price;
+     var pic=e.target.dataset.pic;
+     //console.log(lid,title,price,spec,pic);
+     var url="/addcartP";
+     var obj={
+       lid,title,subtitle,price,pic
+     };
+      this.axios.get(url,{
+       params:obj
+     }).then(res=>{
+       console.log(res);
+       if(res.data.code==-1){
+         this.$toast("请先登录");
+         this.$router.push("/login");
+       }else if(res.data.code==1){
+         this.$toast("添加成功");
+       }
+     }).catch(err=>{
+       console.log(err);
+     })
+    },
+    findcart(){//查看购物车
+     this.$router.push("/GerenG");
+    },
     //功能 请求单个商品详情数据
      loadMore(){
        var url="productt";

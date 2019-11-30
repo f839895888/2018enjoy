@@ -7,15 +7,15 @@
        <div class="pictxt">
           <img src="http://127.0.0.1:3000/store1.jpg" />
           <div class="txt">
-             <h2>-日本料理-</h2>
+             <h2>-{{list[0].fenlei}}-</h2>
              <span>10个精品，2个新品</span>
           </div>
        </div>
        <!--3.灰色背景-->
       <div>
         <div class="nav">
-           <a href="javascript:;" class="active">精品店</a>
-           <a href="javascript:;">新品店</a>
+           <a href="javascript:;" :class="isactive?'active':''" @click="loadMore()">精品店</a>
+           <a href="javascript:;" :class="isactive?'':'active'" @click="loadNew()">新品店</a>
         </div>
       </div>
        <!--4.一条店铺信息-->
@@ -45,13 +45,31 @@ import header from "../enjoy/header.vue"
 export default {
     data(){
         return {
-        list:[]
+        list:[{fenlei:""}],
+        isactive:true
         }
     },
     props:["fid"],
     methods:{
-
+      loadNew(){
+        this.isactive=false;
+       var url="/store";
+        this.axios.get(url,{
+          params:{
+            fid:this.fid,
+            isNew:1
+          }
+        }).then(res=>{
+           console.log(res.data);
+           this.list=res.data;
+        })
+        .catch(err=>{
+           console.log(err);
+        })
+      
+      },
       loadMore(){
+         this.isactive=true;
         var url="/store";
         this.axios.get(url,{
           params:{

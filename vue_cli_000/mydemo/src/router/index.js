@@ -37,12 +37,14 @@ import Detail from  "../components/enjoy/Detail.vue"
 import GerenR from "../components/enjoy/GerenR.vue"
 import GerenG from "../components/enjoy/GerenG.vue"
 import GerenS from "../components/enjoy/GerenS.vue"
+import Test from "../components/enjoy/test.vue"
 Vue.use(Router)
 
 export default new Router({
   routes: [
     // { path: '/',  },
     // 登录路径
+    {path:'/test',component:Test},
     {path:'/storeh/:fid',component:Storeh,props:true},
     {path:'/detail/:lid',component:Detail,props:true},
     {path:'/space',component:Space},
