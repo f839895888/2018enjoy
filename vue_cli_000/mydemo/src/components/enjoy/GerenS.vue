@@ -22,7 +22,7 @@
     <div>
       <ul class="GerenS2">
         <li>
-          <router-link to>
+          <router-link to="/">
             <div class="GerenS4">
               <img src="../../../static/gerenA4x.png" alt>
             </div>
