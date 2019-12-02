@@ -70,18 +70,18 @@
           </ul>
      </div>
      <!--中间滚动条-->
-     <div class="middle">
-        <v-touch v-on:swipeleft="del()" v-on:swiperight="add()" tag="div">
+     <div class="middle" @click="move1(-1)">
+        <v-touch v-on:swipeleft="move1(-1)" v-on:swiperight="move1(1)" tag="div">
          <ul :style="{'margin-left':172.5 * moved2 + 'px'}">
           <li class="top">
-            <router-link to="/detail">
+            <router-link to="/storeh/1">
                 <img src="http://127.0.0.1:3000/08.jpg" alt="" />
                 <p class="title2">日本料理</p>
                 <p class="subtitle2">10个精品店</p>
             </router-link>
           </li>
           <li class="top">
-            <router-link to="">
+            <router-link to="/storeh/2">
               <img src="http://127.0.0.1:3000/09.jpg" alt="" />
               <p class="title2">精选西餐</p>
               <p class="subtitle2">10个精品店</p>
@@ -138,7 +138,7 @@
           <a href="javascript:;" class="more">查看更多</a>
           <ul>
             <li>
-              <router-link :to="`/DetailP/${list.pid}`"><img src="http://127.0.0.1:3000/12.jpg"/></router-link>
+              <a href="javascript:;"><img src="http://127.0.0.1:3000/12.jpg"/></a>
             </li>
             <li>
                <a href="javascript:;"><img src="http://127.0.0.1:3000/13.jpg"/></a>
@@ -203,23 +203,28 @@ export default {
         "http://127.0.0.1:3000/11.jpg",
         "http://127.0.0.1:3000/06.jpg",
         "http://127.0.0.1:3000/07.jpg"
-      ],
-      list:[]
+      ]
     }
   },
   methods: {
-    add(){
-      this.moved2++;
-      if(this.moved2>0){
-        this.moved2=1;
-      } 
-    },
-    del(){
-      this.moved2--;
+    move1(i) {
+      this.moved2 += i;
       if(this.moved2<-1){
-       this.moved2=-1;
+        this.moved2=-1
       }
     },
+    // add(){
+    //   this.moved2++;
+    //   if(this.moved2>0){
+    //     this.moved2=1;
+    //   } 
+    // },
+    // del(){
+    //   this.moved2--;
+    //   if(this.moved2<-1){
+    //    this.moved2=-1;
+    //   }
+    // },
     move(){
       if(this.moved>-6){
       this.moved--;
@@ -229,22 +234,8 @@ export default {
         this.number=1;
       }
       console.log(this.moved);
-    },
-    getpid(){
-      var url = "productt/";
-      this.axios.get(url).then(res=>{
-        this.list = res.data;
-          console.log(this.list)
-          console.log(1)
-      }).catch(err=>{
-        console.log(err)
-      })
     }
   },
-  created() {
-    this.getpid();
-  },
-
 }
 </script>
 <style scoped>
@@ -407,7 +398,7 @@ export default {
 .caption{
   width:375rpx;
   position: relative;
-  padding:60px 20px 20px;
+  padding:30px 20px 20px;
   text-align: left;
   box-sizing: border-box;
 }

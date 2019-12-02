@@ -1,10 +1,10 @@
 //vue_server_000/app.js
 //功能：服务器端程序
 //1:下载四个模块
-//  express			web服务器
-//  mysql				mysql驱动
-//  cors				处理跨域
-//  express-session	会话session对象
+//  express   web服务器
+//  mysql    mysql驱动
+//  cors    处理跨域
+//  express-session 会话session对象
 //2:vue_server_000/进入命令行
 //  npm i mysql express express-session cors
 //3:加载四个第三方模块
@@ -52,27 +52,27 @@ server.use(bodyParser.json())
 //功能：用户注册接口
 //1.注册路由
 server.post('/reg',function(req,res){
-	//1.1获取数据
+ //1.1获取数据
     var uname=req.body.uname;
     var upwd=req.body.upwd;
     var phone=req.body.phone;
     var email=req.body.email;
-	  // console.log(obj);
-	 //1.3要执行sql语句
-	 pool.query('select * from ey_user where uname= ?',[uname],(err,result)=>{
-	   if(err) throw err;
-	  //查询用户名是否被注册过
-	   if(result.length==0){
+   // console.log(obj);
+  //1.3要执行sql语句
+  pool.query('select * from ey_user where uname= ?',[uname],(err,result)=>{
+    if(err) throw err;
+   //查询用户名是否被注册过
+    if(result.length==0){
      var sql = `insert into ey_user values(null,?,?,?,?)`;
      pool.query(sql,[uname,upwd,email,phone],(err,result)=>{
       if(err) throw err;
       res.send({code:1,msg:"注册成功"})
        })
-	   }else {
+    }else {
        res.send({code:-1,msg:"用户名已注册"})
      }
    
-	 });
+  });
 });
 // 根据用户名称查询是否可以注册get
 // server.get("/checkuname/:uname",(req,res)=>{
@@ -201,7 +201,15 @@ server.get("/checkLogin",(req,res)=>{
   }
 })
 
-
+//功能：查询餐厅列表信息
+server.get("/store",(req,res)=>{
+  var fid=req.query.fid;
+   var sql=`SELECT * FROM ey_store WHERE family_sid=?`;
+   pool.query(sql,[fid],(err,result)=>{
+    if(err)throw err;
+    res.send(result);
+   })
+})
 
 
 
