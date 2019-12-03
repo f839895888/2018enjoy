@@ -129,16 +129,26 @@ INSERT INTO ey_liang VALUES(6,"http://127.0.0.1:3000/ld6_1.jpg","曾多次担任
 INSERT INTO ey_liang VALUES(6,"http://127.0.0.1:3000/ld6_2.jpg","新鲜鹅肝演绎美味寿司 空运食材打造超值午餐体验","在凤寿司，想品尝到来自日本的新鲜食材绝不是件难事，餐厅每周定期空运食材，将当地新鲜的海鲜特产引入京城，立志让每位食客吃到鲜美地道的高级日本料理。此次午市套餐准备的「鹅肝寿司」选用新鲜食材打造，质地细嫩，风味鲜美一览无余。更有「海鲜饭」、「茶碗蒸」等精美日式料理，带来美味午餐体验。");
 INSERT INTO ey_liang VALUES(6,"http://127.0.0.1:3000/ld6_3.jpg","精品7道式海鲜饭套餐  ENJOY 独享69折","凤寿司午市海鲜饭套餐，诚意奉上精品料理，ENJOY 独享69折。");
 
+
 #4.创建用户评论表
 CREATE TABLE ey_comment(
  id INT PRIMARY KEY AUTO_INCREMENT,
  uid INT,
- pid INT,
- picUrl VARCHAR(64),
- title VARCHAR(64),
- comment VARCHAR(255)
+ uname VARCHAR(64),
+ utoux VARCHAR(64),
+ scoreZ DECIMAL(4,1),
+ scoreH DECIMAL(4,1),
+ scoreF DECIMAL(4,1),
+ lid INT,
+ ctag VARCHAR(64),
+ comment VARCHAR(255),
+ picUrl VARCHAR(255)
 );
--- INSERT INTO ey_comment VALUES();
+INSERT INTO ey_comment VALUES(null,1,'dangdang','http://127.0.0.1:3000/yuan.jpg',5.0,5.0,5.0,1,'干净卫生 好吃','特别好，很精致，米饭粒粒饱满，连送的冰淇淋都很好吃','http://127.0.0.1:3000/comment.jpg,http://127.0.0.1:3000/s1.jpg,http://127.0.0.1:3000/s2.jpg');
+INSERT INTO ey_comment VALUES(null,2,'dongdong','http://127.0.0.1:3000/yuan.jpg',4.9,5.0,5.0,1,'干净卫生 好吃','特别好，很精致，米饭粒粒饱满，连送的冰淇淋都很好吃','http://127.0.0.1:3000/s3.jpg,http://127.0.0.1:3000/comment.jpg,http://127.0.0.1:3000/s4.jpg');
+INSERT INTO ey_comment VALUES(null,3,'ranran','http://127.0.0.1:3000/yuan.jpg',5.0,4.8,4.9,1,'干净卫生 好吃','特别好，很精致，米饭粒粒饱满，连送的冰淇淋都很好吃','http://127.0.0.1:3000/s5.jpg,http://127.0.0.1:3000/s7.jpg,http://127.0.0.1:3000/s6.jpg');
+INSERT INTO ey_comment VALUES(null,2,'dongdong','http://127.0.0.1:3000/yuan.jpg',4.9,5.0,5.0,2,'干净卫生 好吃','特别好，很精致，米饭粒粒饱满，连送的冰淇淋都很好吃','http://127.0.0.1:3000/s3.jpg,http://127.0.0.1:3000/comment.jpg,http://127.0.0.1:3000/s4.jpg');
+INSERT INTO ey_comment VALUES(null,3,'ranran','http://127.0.0.1:3000/yuan.jpg',5.0,4.8,4.9,2,'干净卫生 好吃','特别好，很精致，米饭粒粒饱满，连送的冰淇淋都很好吃','http://127.0.0.1:3000/s5.jpg,http://127.0.0.1:3000/s7.jpg,http://127.0.0.1:3000/s6.jpg');
 
 #5.创建购物车列表
 CREATE TABLE ey_cart(

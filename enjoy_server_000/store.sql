@@ -39,7 +39,6 @@ INSERT INTO ey_store VALUES(null,2,"精选西餐",0,"国贸大酒店酒廊周末
 INSERT INTO ey_store VALUES(null,2,"精选西餐",1,"肉趣 MEATEREST 分割肉单人餐","便捷超值的牛扒餐",75,86,"http://127.0.0.1:3000/s23.jpg");
 INSERT INTO ey_store VALUES(null,2,"精选西餐",1,"肉趣 MEATEREST 芝巴达单人餐","柔软夏巴塔面包+软嫩肉肆",35,43,"http://127.0.0.1:3000/s24.jpg");
 
-
 #二: 创建第二个表:ey_foods 食物信息表
 CREATE TABLE ey_foods(
  id INT PRIMARY KEY AUTO_INCREMENT,

@@ -51,28 +51,32 @@
     <div class="user">
         <h3 class="card-title">用户评价</h3>
         <div class="inner">
-          <div class="cell">
+          <div class="cell" v-for="(item,i) of commentList" :key="i">
             <div class="oneuser">
-              <img src="http://127.0.0.1:3000/yuan.jpg" />
-              <span class="username">ENJOY_4HAVD8hM</span>
+              <img :src="item.utoux" />
+              <span class="username">{{item.uname}}</span>
             </div>
-            <p class="score">菜品质量 5.0 | 就餐环境 5.0 | 餐厅服务 5.0 </p>
+            <p class="score">菜品质量 {{item.scoreZ.toFixed(1)}} | 就餐环境 {{item.scoreH.toFixed(1)}} | 餐厅服务 {{item.scoreF.toFixed(1)}} </p>
             <div class="tags clearfix">
-              <span class="tag-item">干净卫生</span>
-              <span class="tag-item">好吃</span>
+              <span class="tag-item">{{item.ctag}}</span>
+              <!-- <span class="tag-item">好吃</span> -->
             </div>
-            <p class="pcontent">特别好，很精致，米饭粒粒饱满，连送的冰淇淋都很好吃</p>
-            <div class="images clearfix">
-              <div>
-                  <img src="http://127.0.0.1:3000/comment.jpg" style="width: 120px; height: 120px;"/>
+            <p class="pcontent">{{item.comment}}</p>
+            <div class="images clearfix" >
+              <div v-for="(p,index) of item.picUrl" :key="index">
+                  <img :src="p" style="width: 100px; height: 100px;"/>
               </div>  
             </div>
           </div>
         </div>
-        <a href="javascript:;" class="more"> 
-          <span class="morecontent">查看全部评价</span>
+        <router-link :to="`/allcomment/${lid}`" class="more" > 
+          <span class="morecontent" >查看全部评价</span>
           <span class="dir"></span>
-        </a>
+        </router-link>
+        <!--发表评论按钮-->
+        <div class="comm">
+          <button class="mycomment" @click="fbpl()">发表个人评论......</button>
+        </div>
         <div class="gap"></div>
     </div>
      <!--5.MENU-->
@@ -181,22 +185,47 @@
 export default {
   data(){
     return {
-      product:{},
+      product:{title:""},
       liangdian:[],
       pics:[{imgUrl:""}],
-      menu:[]
+      menu:[],
+      commentList:[]
     }
   },
   props:["lid"],
   created() {
     this.loadMore();
+    this.loadC();
   },
   watch: {
     lid(){
       this.loadMore();
+      this.loadC();
     }
   },
   methods:{
+    fbpl(){
+      this.$router.push(`/comment/${this.lid}`);
+    },
+    loadC(){
+      var url="/findComment";
+      this.axios.get(url,{
+        params:{lid:this.lid}
+      }).then(res=>{
+        // console.log(res.data.data);
+        this.commentList=res.data.data;
+        for(var i=0;i<res.data.data.length;i++){
+        // console.log(res.data.data[i].picUrl);
+        // console.log(res.data.data[i].picUrl.split(","));
+        // this.commentList.push(res.data.data[i].picUrl.split(","))
+        this.commentList[i].picUrl=res.data.data[i].picUrl.split(",")
+        }
+        console.log(this.commentList);
+      })
+      .catch(err=>{
+        console.log(err);
+      })
+    },
     addcart(e){//添加购物车
      var lid=e.target.dataset.lid;
      var title=e.target.dataset.title;
@@ -253,6 +282,22 @@ export default {
 }
 </script>
 <style scoped>
+.comm{
+  padding:10px 20px;
+  text-align: left;
+}
+.mycomment{
+  
+  height:60rpx;
+  background:#e29494;
+  color:#fff;
+  font-size: 26rpx;
+  margin-top:50rpx;
+  border-radius:5px;
+  outline: none;
+  border:0;
+  padding:5px;
+}
 .hbottom{
 margin-bottom: 50px;
 }
@@ -553,6 +598,9 @@ margin-bottom: 18px;
   color: #2c3038;
   display: block;
   margin-bottom: 12px;
+}
+.cell{
+  margin-bottom: 15px;
 }
 .store{
   background-color: #fff;

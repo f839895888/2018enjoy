@@ -38,6 +38,8 @@ import GerenR from "../components/enjoy/GerenR.vue"
 import GerenG from "../components/enjoy/GerenG.vue"
 import GerenS from "../components/enjoy/GerenS.vue"
 import Test from "../components/enjoy/test.vue"
+import AllComment from "../components/enjoy/allcomment.vue"
+import comment from "../components/enjoy/comment.vue"
 Vue.use(Router)
 
 export default new Router({
@@ -45,6 +47,8 @@ export default new Router({
     // { path: '/',  },
     // 登录路径
     {path:'/test',component:Test},
+    {path:'/allcomment/:lid',component:AllComment,props:true},
+    {path:'/comment/:lid',component:comment,props:true},
     {path:'/storeh/:fid',component:Storeh,props:true},
     {path:'/detail/:lid',component:Detail,props:true},
     {path:'/space',component:Space},
