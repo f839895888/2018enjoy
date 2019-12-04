@@ -138,7 +138,7 @@
           <a href="javascript:;" class="more">查看更多</a>
           <ul>
             <li>
-              <a href="javascript:;"><img src="http://127.0.0.1:3000/12.jpg"/></a>
+              <router-link to="DetailP/1"><img src="http://127.0.0.1:3000/12.jpg"/></router-link>
             </li>
             <li>
                <a href="javascript:;"><img src="http://127.0.0.1:3000/13.jpg"/></a>

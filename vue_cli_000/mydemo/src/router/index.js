@@ -17,6 +17,7 @@ import Router from 'vue-router'
 //http://localhost:8080/#/GerenG
 //http://localhost:8080/#/GerenR
 //http://localhost:8080/#/GerenS
+//http://localhost:8080/#/comment
 // 父组件
 import index from "../components/index.vue"
 // 为登录组件配置访问路径 /login
@@ -37,12 +38,14 @@ import Detail from  "../components/enjoy/Detail.vue"
 import GerenR from "../components/enjoy/GerenR.vue"
 import GerenG from "../components/enjoy/GerenG.vue"
 import GerenS from "../components/enjoy/GerenS.vue"
+import Comment from "../components/enjoy/Comment.vue"
 Vue.use(Router)
 
 export default new Router({
   routes: [
     // { path: '/',  },
     // 登录路径
+    {path:'/Comment',component:Comment},
     {path:'/storeh/:fid',component:Storeh,props:true},
     {path:'/detail/:lid',component:Detail,props:true},
     {path:'/space',component:Space},
