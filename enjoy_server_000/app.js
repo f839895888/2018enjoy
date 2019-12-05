@@ -494,8 +494,5 @@ server.get("/findCommentall",(req,res)=>{
    pool.query(sql2,[lid],(err,result)=>{
      if(err)throw err;
      res.send({code:1,msg:"查询成功",data:result})
-   })
- })
- //http://127.0.0.1:3000/findCommentall?lid=1
- //http://127.0.0.1:3000/login?uname=dangdang&upwd=123456
- //http://127.0.0.1:3000/findCommentall?lid=1
+    })
+  })
