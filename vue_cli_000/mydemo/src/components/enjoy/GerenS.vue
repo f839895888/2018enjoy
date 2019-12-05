@@ -22,7 +22,7 @@
     <div>
       <ul class="GerenS2">
         <li>
-          <router-link to>
+          <router-link to="/">
             <div class="GerenS4">
               <img src="../../../static/gerenA4x.png" alt>
             </div>
@@ -205,8 +205,8 @@ a {
   float: left;
   background-color: #fff;
 }
-.GerenST2 {
-}
+/* .GerenST2 {
+} */
 .GerenST3 {
   float: left;
   width: 47.4%;

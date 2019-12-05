@@ -1,0 +1,35 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'run', 'dev' ]
+2 info using npm@6.13.1
+3 info using node@v10.16.0
+4 verbose run-script [ 'predev', 'dev', 'postdev' ]
+5 info lifecycle y@1.0.0~predev: y@1.0.0
+6 info lifecycle y@1.0.0~dev: y@1.0.0
+7 verbose lifecycle y@1.0.0~dev: unsafe-perm in lifecycle true
+8 verbose lifecycle y@1.0.0~dev: PATH: /usr/local/lib/node_modules/npm/node_modules/npm-lifecycle/node-gyp-bin:/Users/a111/Desktop/20191125/2018enjoy/vue_cli_000/mydemo/node_modules/.bin:/Applications/XAMPP/xamppfiles/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/Library/Apple/bin:/Applications/XAMPP/xamppfiles/bin:/usr/local/mysql/bin:/Users/a111/usr/local/bin:/Users/a111/usr/local/lib/node_modules:/usr/local/bin/webpack:/usr/local/bin/webpack-cli:/usr/local/bin/webpack-dev-server:/Users/a111/usr/local/lib/webpack:/Users/a111/usr/local/lib/webpack-cli:/Users/a111/usr/local/lib/webpack-dev-server:/usr/local/bin:/usr/local/mysql/bin:/Users/a111/usr/local/bin:/Users/a111/usr/local/lib/node_modules:/usr/local/bin/webpack:/usr/local/bin/webpack-cli:/usr/local/bin/webpack-dev-server:/Users/a111/usr/local/lib/webpack:/Users/a111/usr/local/lib/webpack-cli:/Users/a111/usr/local/lib/webpack-dev-server
+9 verbose lifecycle y@1.0.0~dev: CWD: /Users/a111/Desktop/20191125/2018enjoy/vue_cli_000/mydemo
+10 silly lifecycle y@1.0.0~dev: Args: [ '-c',
+10 silly lifecycle   'webpack-dev-server --inline --progress --config build/webpack.dev.conf.js' ]
+11 silly lifecycle y@1.0.0~dev: Returned: code: 1  signal: null
+12 info lifecycle y@1.0.0~dev: Failed to exec dev script
+13 verbose stack Error: y@1.0.0 dev: `webpack-dev-server --inline --progress --config build/webpack.dev.conf.js`
+13 verbose stack Exit status 1
+13 verbose stack     at EventEmitter.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-lifecycle/index.js:332:16)
+13 verbose stack     at EventEmitter.emit (events.js:198:13)
+13 verbose stack     at ChildProcess.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-lifecycle/lib/spawn.js:55:14)
+13 verbose stack     at ChildProcess.emit (events.js:198:13)
+13 verbose stack     at maybeClose (internal/child_process.js:982:16)
+13 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:259:5)
+14 verbose pkgid y@1.0.0
+15 verbose cwd /Users/a111/Desktop/20191125/2018enjoy/vue_cli_000/mydemo
+16 verbose Darwin 19.0.0
+17 verbose argv "/usr/local/bin/node" "/usr/local/bin/npm" "run" "dev"
+18 verbose node v10.16.0
+19 verbose npm  v6.13.1
+20 error code ELIFECYCLE
+21 error errno 1
+22 error y@1.0.0 dev: `webpack-dev-server --inline --progress --config build/webpack.dev.conf.js`
+22 error Exit status 1
+23 error Failed at the y@1.0.0 dev script.
+23 error This is probably not a problem with npm. There is likely additional logging output above.
+24 verbose exit [ 1, true ]

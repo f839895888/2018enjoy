@@ -137,8 +137,13 @@
           <div class="desc">本周上架10款精品，10款新品</div>
           <a href="javascript:;" class="more">查看更多</a>
           <ul>
+<<<<<<< HEAD
             <li v-for="(p,i) of p1" :key="i">
               <router-link :to="`/DetailP/${p.pid}`"><img :src="`http://127.0.0.1:3000${p.bsimg}`"/></router-link>
+=======
+            <li>
+              <router-link to="DetailP/1"><img src="http://127.0.0.1:3000/12.jpg"/></router-link>
+>>>>>>> 1760d7c40f8a31ed315cc6fdf0c6058ae0063a78
             </li>
             <!-- <li>
                <router-link to="/DetailP/2"><img src="http://127.0.0.1:3000/13.jpg"/></router-link>

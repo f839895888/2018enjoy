@@ -17,6 +17,7 @@ import Router from 'vue-router'
 //http://localhost:8080/#/GerenG
 //http://localhost:8080/#/GerenR
 //http://localhost:8080/#/GerenS
+//http://localhost:8080/#/comment
 // 父组件
 import index from "../components/index.vue"
 // 为登录组件配置访问路径 /login
@@ -37,18 +38,26 @@ import Detail from  "../components/enjoy/Detail.vue"
 import GerenR from "../components/enjoy/GerenR.vue"
 import GerenG from "../components/enjoy/GerenG.vue"
 import GerenS from "../components/enjoy/GerenS.vue"
+<<<<<<< HEAD
 import Test from "../components/enjoy/test.vue"
 import AllComment from "../components/enjoy/allcomment.vue"
 import comment from "../components/enjoy/comment.vue"
+=======
+import Comment from "../components/enjoy/Comment.vue"
+>>>>>>> 1760d7c40f8a31ed315cc6fdf0c6058ae0063a78
 Vue.use(Router)
 
 export default new Router({
   routes: [
     // { path: '/',  },
     // 登录路径
+<<<<<<< HEAD
     {path:'/test',component:Test},
     {path:'/allcomment/:lid',component:AllComment,props:true},
     {path:'/comment/:lid',component:comment,props:true},
+=======
+    {path:'/Comment',component:Comment},
+>>>>>>> 1760d7c40f8a31ed315cc6fdf0c6058ae0063a78
     {path:'/storeh/:fid',component:Storeh,props:true},
     {path:'/detail/:lid',component:Detail,props:true},
     {path:'/space',component:Space},
