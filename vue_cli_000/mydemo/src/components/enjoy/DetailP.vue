@@ -52,17 +52,20 @@
             <p class="a2_wd">{{comt[index].comts}}</p>
 
            
-
+<!-- ${comt[index].zhaopian[index]} -->
             <van-image 
                 v-for="(item,index) in comt[index].zhaopian" :key="index" 
-                :src="`http://localhost:3000/${comt[index].zhaopian[index]}`"
-            width="100" height="100"  />
+                :src="`http://localhost:3000/${item}`"
+            width="100" height="100" />
           </div>
         </div>
       </div>
     </div>
     <a class="a3" href="javascript:;">
       <span @click="chakan()">查看全部评价</span>
+      <router-link :to="`/comment`"><span >我要评论</span></router-link>
+      
+      
       <span></span>
     </a>
     <div class="fenjiexian"></div>

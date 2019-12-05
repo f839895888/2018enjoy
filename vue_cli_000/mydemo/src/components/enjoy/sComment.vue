@@ -58,8 +58,8 @@ export default {
       }
       console.log(fils);
       //  var imgUl=fils.
-      //请求接口
-      var url = "ey_comments";
+      //请求接口 匆匆
+      var url = "ey_scomment";
       // 获取用户输入的评价内容
       var commentInput = this.commentInput;
       var val1=this.val1
