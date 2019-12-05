@@ -226,7 +226,12 @@ if(lid!==undefined){
   var sql1=`select * from ey_details where lid=?`;
   pool.query(sql1,[lid],(err,result)=>{
     if(err) console.log(err);
-    output.product=result[0];
+    if(result.length>0){
+      output.product=result[0];
+    }else{
+      output.product={title:"",imgUrl:""};
+    }
+    
     var sql2=`select * from ey_liang where ldid=?`;
     pool.query(sql2,[lid],(err,result)=>{
       if(err) console.log(err);
@@ -234,7 +239,12 @@ if(lid!==undefined){
       var sql3=`select * from ey_lunbo where family_id=?`
       pool.query(sql3,[lid],(err,result)=>{
         if(err) console.log(err);
-        output.pics=result;
+        if(result.length>0){
+          output.pics=result;
+        }else{
+          output.pics=[{imgUrl:""}]
+        }
+        
         var sql4=`select * from ey_menu where fid=?`
       pool.query(sql4,[lid],(err,result)=>{
         if(err) console.log(err);
@@ -377,18 +387,41 @@ server.get("/addcomment",(req,res)=>{
 })
 })
 
-
-
-//功能：查看所有的评论
-server.get("/findComment",(req,res)=>{
-  var uid=req.session.uid;
+//功能：在商品详情页仅查看第一条评论
+server.get("/findCommentone",(req,res)=>{
+  // var uid=req.session.uid;
   var lid=req.query.lid;
   // var uname="";
-  console.log(uid);
-  if(!uid){
-    res.send({code:-1,msg:"请登录"});
-    return;
-  }
+  // console.log(uid);
+  // if(!uid){
+  //   res.send({code:-1,msg:"请登录"});
+  //   return;
+  // }
+  // var sql1=`SELECT uname FROM ey_user WHERE uid = ?`;
+  // pool.query(sql1,[uid],(err,result)=>{
+  //       if(err)throw err;
+  //       res.send(result);
+  // })
+  var sql2=`SELECT * FROM ey_comment WHERE lid = ? LIMIT 1`;
+   pool.query(sql2,[lid],(err,result)=>{
+     if(err)throw err;
+     res.send({code:1,msg:"查询成功",data:result})
+   })
+ })
+ //http://127.0.0.1:3000/findCommentone?lid=1
+ //http://127.0.0.1:3000/login?uname=dangdang&upwd=123456
+ //http://127.0.0.1:3000/findCommentone?lid=1
+
+//功能：在所有评论页面查看所有的评论
+server.get("/findCommentall",(req,res)=>{
+  // var uid=req.session.uid;
+  var lid=req.query.lid;
+  // var uname="";
+  // console.log(uid);
+  // if(!uid){
+  //   res.send({code:-1,msg:"请登录"});
+  //   return;
+  // }
   // var sql1=`SELECT uname FROM ey_user WHERE uid = ?`;
   // pool.query(sql1,[uid],(err,result)=>{
   //       if(err)throw err;
@@ -400,9 +433,9 @@ server.get("/findComment",(req,res)=>{
      res.send({code:1,msg:"查询成功",data:result})
    })
  })
- //http://127.0.0.1:3000/findComment?lid=1
+ //http://127.0.0.1:3000/findCommentall?lid=1
  //http://127.0.0.1:3000/login?uname=dangdang&upwd=123456
- //http://127.0.0.1:3000/findComment?lid=1
+ //http://127.0.0.1:3000/findCommentall?lid=1
 
 
 

@@ -208,7 +208,7 @@ export default {
       this.$router.push(`/comment/${this.lid}`);
     },
     loadC(){
-      var url="/findComment";
+      var url="/findCommentone";
       this.axios.get(url,{
         params:{lid:this.lid}
       }).then(res=>{
@@ -559,7 +559,7 @@ margin-bottom: 18px;
 .iconfont img{
   width:25px;
   height: 25px;
-  margin-right: 20px;
+  margin-right: 10px;
 }
 .address a{
   color:#63666b;
@@ -685,7 +685,7 @@ margin-bottom: 18px;
 .title{
     width: 294px;
     font-family: PingFangSC;
-    font-size: 22px;
+    font-size: 21px;
     word-break: break-all;
     color: #2c3038;
 }

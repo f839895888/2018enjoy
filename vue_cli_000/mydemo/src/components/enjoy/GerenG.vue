@@ -120,6 +120,7 @@ export default {
 .card-goods {
   padding: 10px 0;
   background-color: #fff;
+  margin-bottom: 120px;
   &__item {
     position: relative;
     background-color: #fafafa;

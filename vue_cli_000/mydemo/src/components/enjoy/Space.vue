@@ -10,7 +10,7 @@
      </div>
      <!--中间轮播图-->
      <div class="swipe-container">
-          <ul @mousemove="move()" :style="{'margin-left':345 * moved+20 + 'px'}">
+          <ul @mousemove="move()" :style="{'margin-left':345 * moved+12 + 'px'}">
             <li>
               <a href="javascript:;" class="bord">
                 <img src="http://127.0.0.1:3000/01.jpg" />
@@ -357,7 +357,7 @@ export default {
   overflow: hidden;
   transition:2s;
   list-style: none;
-  padding-left:20px;
+  padding-left:12px;
   width:538px;
   overflow: auto;
   box-sizing: border-box;
@@ -419,14 +419,14 @@ export default {
 .caption{
   width:375rpx;
   position: relative;
-  padding:30px 20px 20px;
+  padding:75px 20px 5px;
   text-align: left;
   box-sizing: border-box;
 }
 .queue{
   position: absolute;
   right:20px;
-  top:29px;
+  top:70px;
   font-size: 11px;
   line-height: 1.6;
   color: #9b9b9b;
