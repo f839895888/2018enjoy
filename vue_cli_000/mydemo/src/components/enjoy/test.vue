@@ -1,33 +1,25 @@
 <template>
   <div>
-    <p>验证页面</p>
-    <div class="container">
-	  <span id="txt">{{city}}</span>
-		<span class="imag"></span>
-	</div>
-	<div>
-	  <ul id="d1" @click="a">
-	  	<li><router-link to="">北京</router-link></li>
-	  	<li><a href="javascript:;">上海</a></li>
-	  	<li><a href="javascript:;">天津</a></li>
-	  	<li><a href="javascript:;">沈阳</a></li>
-	  	<li><a href="javascript:;">石家庄</a></li>
-	  </ul>			
-	</div>
+		<h3>图片上传</h3>
+    <van-uploader v-model="fileList" :after-read="afterRead" multiple/>
   </div>
 </template>
 <script>
 export default {
   data(){
     return {
-     city:""
+     fileList:[
+			 { url: 'https://img.yzcdn.cn/vant/leaf.jpg' },
+        // Uploader 根据文件后缀来判断是否为图片文件
+        // 如果图片 URL 中不包含类型信息，可以添加 isImage 标记来声明
+        { url: 'https://cloud-image', isImage: true }
+		 ]
     }
   },
   methods: {
-    a(e){
-      if(e.target.nodeName=="A"){
-        this.city=e.target.innerHTML;
-      }
+    afterRead(file) {
+      // 此时可以自行将文件上传至服务器
+      console.log(file);
     }
   },
   created() {
@@ -36,21 +28,5 @@ export default {
 }
 </script>
 <style scoped>
-ul{
-		display:flex;
-		justify-content:space-between;
-		flex-wrap:wrap;
-		width:280px;
-		list-style:none;
-		text-align:center;
-		}
-	  ul li{
-		  display:block;
-			height:40px;
-			line-height:40px;
-			width:120px;
-			border:1px solid #fff;
-			background-color:yellow;
-			margin:5px 10px;
-		}
+
 </style>  

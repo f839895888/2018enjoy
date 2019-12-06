@@ -180,9 +180,6 @@ server.get("/productt", (req, res) => {
   } 
 })
 
-//  商品列表页面 猜你喜欢接口
- server.get("/productd",(req,res)=>{
-  
 //  商品显详情页 猜你喜欢接口
 server.get("/productd", (req, res) => {
 
@@ -214,11 +211,11 @@ server.get("/store",(req,res)=>{
    var sql=`SELECT * FROM ey_store WHERE family_sid=? AND isNew=?`;
    pool.query(sql,[fid,isNew],(err,result)=>{
     if(err)throw err;
-server.get("/store", (req, res) => {
-  var fid = req.query.fid;
-  var sql = `SELECT * FROM ey_store WHERE family_sid=?`;
-  pool.query(sql, [fid], (err, result) => {
-    if (err) throw err;
+// server.get("/store", (req, res) => {
+//   var fid = req.query.fid;
+//   var sql = `SELECT * FROM ey_store WHERE family_sid=?`;
+//   pool.query(sql, [fid], (err, result) => {
+//     if (err) throw err;
     res.send(result);
   })
 })
@@ -238,7 +235,7 @@ server.get("/ey_comment", (req, res) => {
 server.post("/ey_comments", (req, res) => {
   //判断是否登录
   var uid = req.session.uid;
-  var cname=req.session.uname;
+  var uname=req.session.uname;
   if (!uid) {
     res.send({ code: -1, msg: "请登录" });
     return;
@@ -413,41 +410,34 @@ server.get("/addcartP",(req,res)=>{
 })
 
 //功能：添加一条评论
-server.get("/addcomment",(req,res)=>{
+
+//匆匆评价
+
+server.post("/ey_scomment", (req, res) => {
+  //判断是否登录
   var uid = req.session.uid;
-  //3:如果用户没有登录   !!!
-  if(!uid){
-   //4:返回错误消息 请登录
-   res.send({code:-1,msg:"请登录"});
-   return;
+  var uname=req.session.uname;
+  if (!uid) {
+    res.send({ code: -1, msg: "请登录" });
+    return;
   }
-  var lid = req.query.lid;  //商品编号
-  var title=req.query.title;  //商品名称
-  var subtitle=req.query.subtitle;  //商家名称
-  var price = req.query.price;//商品价格
-  var pic=req.query.pic;      //商品图片
-  var sql = "SELECT id FROM ey_cart WHERE uid = ? AND lid = ?";
-  pool.query(sql,[uid,lid],(err,result)=>{
-    if(err)throw err;
-//8:如果用户没有购买过此商品添加
-//9:如果用户己经购买过此商品更新数量
-    if(result.length==0){
-    var sql = `INSERT INTO ey_cart VALUES(null,?,?,?,?,?,?,1)`; 
-        pool.query(sql,[uid,lid,title,subtitle,price,pic],(err,result)=>{
-          if(err)throw err;
-          console.log(result);
-          res.send({code:1,msg:"添加成功"});
-        })
-    }else{
-    var sql =`UPDATE ey_cart SET count=count+1 WHERE uid=? AND lid=?`;
-        pool.query(sql,[uid,lid],(err,result)=>{
-          if(err)throw err;
-          console.log(result);
-          res.send({code:1,msg:"添加成功"});
-        })
+  // 获取客户上传的照片名称和评论内容
+  var utoux='http://127.0.0.1:3000/yuan.jpg'
+  var scoreZ=req.body.val1
+  var scoreH=req.body.val2
+  var scoreF=req.body.val3
+  var lid=req.body.lid
+  var comment = req.body.str
+  var picUrl = req.body.fils
+  console.log(picUrl);
+  //执行sql语句 插入以上内容
+  var sql = `INSERT INTO ey_scomment VALUES(null,?,?,?,?,?,?,?,null,?,?)`
+  pool.query(sql, [uid,uname,utoux,scoreZ,scoreH,scoreF,lid,comment,picUrl], (err, result) => {
+    if (err) throw err;
+    if(result.affectedRows>0){
+      res.send({ code: 1, msg: "评论成功" })
     }
-    
-})
+  })
 })
 
 //功能：在商品详情页仅查看第一条评论
@@ -465,7 +455,7 @@ server.get("/findCommentone",(req,res)=>{
   //       if(err)throw err;
   //       res.send(result);
   // })
-  var sql2=`SELECT * FROM ey_comment WHERE lid = ? LIMIT 1`;
+  var sql2=`SELECT * FROM ey_scomment WHERE lid = ? LIMIT 1`;
    pool.query(sql2,[lid],(err,result)=>{
      if(err)throw err;
      res.send({code:1,msg:"查询成功",data:result})
@@ -490,9 +480,11 @@ server.get("/findCommentall",(req,res)=>{
   //       if(err)throw err;
   //       res.send(result);
   // })
-  var sql2=`SELECT * FROM ey_comment WHERE lid = ?`;
+  var sql2=`SELECT * FROM ey_scomment WHERE lid = ?`;
    pool.query(sql2,[lid],(err,result)=>{
      if(err)throw err;
      res.send({code:1,msg:"查询成功",data:result})
     })
   })
+
+

@@ -10,6 +10,8 @@ import MintUI from "mint-ui";
 import "mint-ui/lib/style.css"
 // //5.引入第三方 axios
 import axios from "axios"
+
+
 // //6.配置访问服务器基础路径
 axios.defaults.baseURL="http://127.0.0.1:3000/"
 //7.保存session信息

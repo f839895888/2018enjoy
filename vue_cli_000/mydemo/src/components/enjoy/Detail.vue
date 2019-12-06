@@ -57,14 +57,14 @@
               <span class="username">{{item.uname}}</span>
             </div>
             <p class="score">菜品质量 {{item.scoreZ.toFixed(1)}} | 就餐环境 {{item.scoreH.toFixed(1)}} | 餐厅服务 {{item.scoreF.toFixed(1)}} </p>
-            <div class="tags clearfix">
-              <span class="tag-item">{{item.ctag}}</span>
-              <!-- <span class="tag-item">好吃</span> -->
-            </div>
+           <!--  <div class="tags clearfix">
+              <span class="tag-item">{{item.ctag}}</span> 
+              <span class="tag-item">好吃</span>
+            </div>-->
             <p class="pcontent">{{item.comment}}</p>
             <div class="images clearfix" >
               <div v-for="(p,index) of item.picUrl" :key="index">
-                  <img :src="p" style="width: 100px; height: 100px;"/>
+                  <img :src="`http://127.0.0.1:3000/`+p" style="width: 100px; height: 100px;"/>
               </div>  
             </div>
           </div>
@@ -182,6 +182,7 @@
 </div>
 </template>
 <script>
+import config from "@/assets/js/config.js"
 export default {
   data(){
     return {
@@ -205,7 +206,7 @@ export default {
   },
   methods:{
     fbpl(){
-      this.$router.push(`/comment/${this.lid}`);
+      this.$router.push(`/scomment/${this.lid}`);
     },
     loadC(){
       var url="/findCommentone";
