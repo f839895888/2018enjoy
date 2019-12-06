@@ -223,7 +223,7 @@ server.get("/ey_comment", (req, res) => {
     console.log(result)
   })
 })
-
+// aa
 
 // 评论功能 测试
 server.post("/ey_comments", (req, res) => {
@@ -249,7 +249,7 @@ server.post("/ey_comments", (req, res) => {
 
 })
 
-//匆匆评价表
+//匆匆评价
 
 server.post("/ey_scomment", (req, res) => {
   //判断是否登录
