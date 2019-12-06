@@ -76,10 +76,7 @@
         <img src="../../../static/dayu.png" alt>
       </router-link>
     </div>
-
-
     <div class="GeRFi1"></div>
-
     <tabbar></tabbar>
   </div>
 </template>
