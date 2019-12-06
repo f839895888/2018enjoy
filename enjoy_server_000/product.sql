@@ -163,5 +163,38 @@ CREATE TABLE ey_cart(
  count INT
 );
 
-
+CREATE TABLE ey_comment(
+  cid INT PRIMARY KEY AUTO_INCREMENT,
+  cname VARCHAR(88) DEFAULT NULL,
+  ctoux VARCHAR(1000) DEFAULT 'jiu1.jpg',
+  comts VARCHAR(300) DEFAULT '默认好评',
+  comt VARCHAR(300) DEFAULT NULL,
+  zhaopian VARCHAR(1000) DEFAULT NULL,
+  val1  VARCHAR(88) DEFAULT 5,
+  val2  VARCHAR(88) DEFAULT 5,
+  val3  VARCHAR(88) DEFAULT 5
+);
+-- 用户评论插入测试数据
+INSERT INTO ey_comment VALUES
+(null,'吃货小青年','jiu1.jpg',"包装不错","这家网页不错啊",'1_1.jpg,1_2.jpg,1_1.jpg,1_2.jpg,1_3.jpg,1_4.jpg,1_5.jpg',5,5,5),
+(null,'小鲜肉','jiu2.jpg',"描述相符","这a饭店aaa不a错哦",'1_1.jpg,1_2.jpg,1_1.jpg,1_2.jpg,1_3.jpg,1_4.jpg,1_5.jpg',5,5,5),
+(null,'包子','jiu3.jpg',"快递真快","这家aaasa饭店是黑哦",'1_1.jpg,1_2.jpg,1_1.jpg,1_2.jpg,1_3.jpg,1_4.jpg,1_5.jpg',5,5,5),
+(null,'饺子','jiu4.jpg',"推荐买哦","大佬带aaaaa你飞吃好",'1_1.jpg,1_2.jpg,1_1.jpg,1_2.jpg,1_3.jpg,1_4.jpg,1_5.jpg',5,5,5),
+(null,'拉面','jiu5.jpg',"描述不符","兄弟aaaaa们这家饭店",'1_1.jpg,1_2.jpg,1_1.jpg,1_2.jpg,1_3.jpg,1_4.jpg,1_5.jpg',5,5,5),
+(null,'海鲜','jiu6.jpg',"真心不好","小姐aaaaa姐，小哥哥",'1_1.jpg,1_2.jpg,1_1.jpg,1_2.jpg,1_3.jpg,1_4.jpg,1_5.jpg',5,5,5),
+(null,'小苹果','jiu7.jpg',"大家别买","大aaa家玩什么呢啊",'1_1.jpg,1_2.jpg,1_1.jpg,1_2.jpg,1_3.jpg,1_4.jpg,1_5.jpg',5,5,5),
+(null,'辣椒','jiu8.jpg',"上当受骗","这家烤aaaaa肉不错哦",'1_1.jpg,1_2.jpg,1_1.jpg,1_2.jpg,1_3.jpg,1_4.jpg,1_5.jpg',5,5,5),
+(null,'句子','jiu9.jpg',"良心卖家","这家醋aaaaa真好吃哦",'1_1.jpg,1_2.jpg,1_1.jpg,1_2.jpg,1_3.jpg,1_4.jpg,1_5.jpg',5,5,5),
+(null,'小鲜橘','jiu20.jpg',"双手支持","哎aaaa，臭豆腐做",'1_1.jpg,1_2.jpg,1_1.jpg,1_2.jpg,1_3.jpg,1_4.jpg,1_5.jpg',5,5,5),
+(null,'小姐姐','jiu21.jpg',"加油加油","榴莲aa挺好吃滴啊",'1_1.jpg,1_2.jpg,1_1.jpg,1_2.jpg,1_3.jpg,1_4.jpg,1_5.jpg',5,5,5),
+(null,'小哥哥','jiu22.jpg',"包装不错","这家饭店真难错aa",'1_1.jpg,1_2.jpg,1_1.jpg,1_2.jpg,1_3.jpg,1_4.jpg,1_5.jpg',5,5,5),
+(null,'小小小小','jiu23.jpg',"描述相符","这家饭店不错哦",'1_1.jpg,1_2.jpg,1_1.jpg,1_2.jpg,1_3.jpg,1_4.jpg,1_5.jpg',5,5,5),
+(null,'大大大','jiu25.jpg',"快递真快","这家饭店是黑店aa",'1_1.jpg,1_2.jpg,1_1.jpg,1_2.jpg,1_3.jpg,1_4.jpg,1_5.jpg',5,5,5),
+(null,'人人','sheng1.jpg',"推荐买哦","大佬带你飞aaa吃好",'1_1.jpg,1_2.jpg,1_1.jpg,1_2.jpg,1_3.jpg,1_4.jpg,1_5.jpg',5,5,5),
+(null,'嘎嘎','sheng2.jpg',"描述不符","兄弟们这家饭aaa店",'1_1.jpg,1_2.jpg,1_1.jpg,1_2.jpg,1_3.jpg,1_4.jpg,1_5.jpg',5,5,5),
+(null,'小孩子','sheng3.jpg',"真心不好","小姐姐，小a哥哥",'1_1.jpg,1_2.jpg,1_1.jpg,1_2.jpg,1_3.jpg,1_4.jpg,1_5.jpg',5,5,5),
+(null,'老顽童','sheng4.jpg',"大家别买","大家玩什么a呢额",'1_1.jpg,1_2.jpg,1_1.jpg,1_2.jpg,1_3.jpg,1_4.jpg,1_5.jpg',5,5,5),
+(null,'超级跑跑','sheng5.jpg',"上当受骗","这家烤肉不错哦",'1_1.jpg,1_2.jpg,1_1.jpg,1_2.jpg,1_3.jpg,1_4.jpg,1_5.jpg',5,5,5),
+(null,'超级猴子','sheng6.jpg',"良心卖家","这家醋真好吃是",'1_1.jpg,1_2.jpg,1_1.jpg,1_2.jpg,1_3.jpg,1_4.jpg,1_5.jpg',5,5,5),
+(null,'超级狗狗','sheng7.jpg',"双手支持","臭豆腐不错推荐",'1_1.jpg,1_2.jpg,1_1.jpg,1_2.jpg,1_3.jpg,1_4.jpg,1_5.jpg',5,5,5);
 
