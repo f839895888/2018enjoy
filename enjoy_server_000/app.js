@@ -229,7 +229,7 @@ server.get("/ey_comment", (req, res) => {
     console.log(result)
   })
 })
-
+// aa
 
 // 评论功能 测试
 server.post("/ey_comments", (req, res) => {
@@ -243,9 +243,37 @@ server.post("/ey_comments", (req, res) => {
   // 获取客户上传的照片名称和评论内容
   var msg = req.body.str
   var fils = req.body.fils
+  var val1=req.body.val1
+  var val2=req.body.val2
+  var val3=req.body.val3
   //执行sql语句 插入以上内容
-  var sql = `INSERT INTO ey_comment(comt,zhaopian,cname) VALUES(?,?,?)`
-  pool.query(sql, [msg, fils,cname], (err, result) => {
+  var sql = `INSERT INTO ey_comment(comt,zhaopian,cname,val1,val2,val3) VALUES(?,?,?,?,?,?)`
+  pool.query(sql, [msg, fils,cname,val1,val2,val3], (err, result) => {
+    if (err) throw err;
+    res.send({ code: 1, msg: "评论成功" })
+  })
+
+})
+
+//匆匆评价
+
+server.post("/ey_scomment", (req, res) => {
+  //判断是否登录
+  var uid = req.session.uid;
+  var cname=req.session.uname;
+  if (!uid) {
+    res.send({ code: -1, msg: "请登录" });
+    return;
+  }
+  // 获取客户上传的照片名称和评论内容
+  var comment = req.body.str
+  var picUrl = req.body.fils
+  var scoreZ=req.body.val1
+  var scoreH=req.body.val2
+  var scoreF=req.body.val3
+  //执行sql语句 插入以上内容
+  var sql = `INSERT INTO ey_scomment(uid,uname,comment,picUrl,,scoreZ,scoreH,scoreF) VALUES(?,?,?,?,?,?)`
+  pool.query(sql, [uid,uname,comment,picUrl,,scoreZ,scoreH,scoreF], (err, result) => {
     if (err) throw err;
     res.send({ code: 1, msg: "评论成功" })
   })

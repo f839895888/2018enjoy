@@ -9,7 +9,7 @@
             <input type="text" placeholder="用户名" v-model="uname">
         </p>
         <p class="totp">
-            <input type="text" placeholder="密码"  v-model="upwd">
+            <input type="password" placeholder="密码"  v-model="upwd">
             <!-- <router-link to="" class="off">
                 获取验证码
             </router-link> -->

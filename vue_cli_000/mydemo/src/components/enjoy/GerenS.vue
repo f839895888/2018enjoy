@@ -104,7 +104,7 @@
       </div>
     </div>
     <div class="GerenSTh1">
-      <router-link to>
+      <router-link to="/">
         <span>查看全部商品</span>
         <img src="../../../static/gerenS7.png" alt="">
       </router-link>

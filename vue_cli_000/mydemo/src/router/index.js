@@ -50,7 +50,7 @@ export default new Router({
     // 登录路径
     {path:'/test',component:Test},
     {path:'/allcomment/:lid',component:AllComment,props:true},
-    {path:'/comment/:lid',component:comment,props:true},
+    {path:'/comment/',component:comment},
     {path:'/scomment/:lid',component:scomment,props:true},
     {path:'/storeh/:fid',component:Storeh,props:true},
     {path:'/detail/:lid',component:Detail,props:true},

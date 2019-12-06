@@ -41,7 +41,7 @@ export default {
       val3:5
     };
   },
-  props:["lid"],
+
   methods: {
     // 上传图片功能
     add() {},
@@ -49,36 +49,35 @@ export default {
     adds() {
       //  获取照片名称
       // new Promise((resolve,reject)=>{})
-      console.log(this.fileList);
+
+      var file = this.fileList;
       // 创建一个数组 来保存照片名称
       var fils = [];
-      for (var i = 0; i < this.fileList.length; i++) {
-        fils[i]=this.fileList[i].file.name;
+      for (var f = 0; f < file.length; f++) {
+        fils[f] = file[f].file.name;
       }
       console.log(fils);
       //  var imgUl=fils.
-      //请求接口 匆匆
-      var url = "ey_scomment";
+      //请求接口
+      var url = "ey_comments";
       // 获取用户输入的评价内容
       var commentInput = this.commentInput;
       var val1=this.val1
       var val2=this.val2
       var val3=this.val3
-      var lid=this.lid
       // 发送数据给服务器
-      var obj = `str=${commentInput}&fils=${fils}&val1=${val1}&val2=${val2}&val3=${val3}&lid=${lid}`;
+      var obj = `str=${commentInput}&fils=${fils}&val1=${val1}&val2=${val2}&val3=${val3}`;
       this.axios
         .post(url, obj)
         .then(res => {
           if (res.data.code == -1) {
-           this.$toast(res.data.msg);
-           this.$router.push("/login")
+            alert(res.data.msg);
           }
           //  console.log(res);
           //  如果服务器返回结果是1那么就是评论成功了
           if (res.data.code == 1) {
             location.reload();
-            this.$toast(res.data.msg);
+            alert(res.data.msg);
           }
         })
         .catch(err => {
@@ -179,3 +178,4 @@ textarea {
   margin-bottom:20px
 }
 </style>
+
