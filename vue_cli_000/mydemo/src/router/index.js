@@ -42,12 +42,14 @@ import Test from "../components/enjoy/test.vue"
 import AllComment from "../components/enjoy/allcomment.vue"
 import comment from "../components/enjoy/comment.vue"
 import scomment from "../components/enjoy/sComment.vue"
+import Sale from "../components/enjoy/Sale.vue"
 Vue.use(Router)
 
 export default new Router({
   routes: [
     // { path: '/',  },
     // 登录路径
+    {path:'/sale',component:Sale},
     {path:'/test',component:Test},
     {path:'/allcomment/:lid',component:AllComment,props:true},
     {path:'/comment/',component:comment},

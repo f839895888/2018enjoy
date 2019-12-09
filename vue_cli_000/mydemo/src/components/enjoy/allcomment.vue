@@ -33,13 +33,13 @@
   </div>
 </template>
 <script>
-import a from "@/assets/js/config.js"
+import config from "@/assets/js/config.js"
 export default{
   data(){
     return {
     val1:'',
     commentList:[],
-    baseUrl:a.config.baseUrl
+    baseUrl:config.config.baseUrl
     }
   },
   props:["lid"],
