@@ -436,7 +436,50 @@ server.get("/addcartP",(req,res)=>{
     
 })
 })
-
+//删除一个指定购物车中商品
+server.get("/del",(req,res)=>{
+  //1:获取当前用户uid
+  var uid = req.session.uid;
+  //2:如果没有uid提示
+  if(!uid){
+   res.send({code:-2,msg:"请登录"});
+   return;
+  }  
+    //1:获取购物车id
+    var id = req.query.id;
+    //2:创建sql
+    var sql = "DELETE FROM ey_cart WHERE id = ?";
+    //3:执行
+    pool.query(sql,[id],(err,result)=>{
+      if(err)throw err;
+      if(result.affectedRows>0){
+        res.send({code:1,msg:"删除成功"})
+      }else{
+        res.send({code:-1,msg:"删除失败"});
+      }
+    })
+  });
+//删除多个指定购物车中商品
+server.get("/delm",(req,res)=>{
+  var uid = req.session.uid;
+  if(!uid){
+   res.send({code:-2,msg:"请登录"});
+   return;
+  }
+  //1:获取一组id 1,2
+  var id = req.query.id;
+  //2:创建sql
+  var sql = `DELETE FROM ey_cart WHERE id IN (${id})`;
+  //3:执行sql并且返回结果
+  pool.query(sql,(err,result)=>{
+    if(err)throw err;
+    if(result.affectedRows>0){
+      res.send({code:1,msg:"删除成功"});
+    }else{
+      res.send({code:-1,msg:"删除失败"});
+    }
+  })
+})
 //功能：添加一条评论
 
 //匆匆评价
