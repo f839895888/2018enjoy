@@ -60,7 +60,7 @@
     </div>
     <div>
       <div class="GerenST2">
-        <div class="GerenST3" v-for="(item,index) of image" :key="index">
+        <div class="GerenST3" v-for="(item,index) of image1" :key="index">
           <img :src="item.img" alt>
           <div class="GerenST4">{{item.title}}</div>
           <div class="GerenST5">¥{{item.price}}</div>
@@ -72,7 +72,7 @@
     </div>
     <div>
       <div class="GerenST2">
-        <div class="GerenST3" v-for="(item,index) of image" :key="index">
+        <div class="GerenST3" v-for="(item,index) of image2" :key="index">
           <img :src="item.img" alt>
           <div class="GerenST4">{{item.title}}</div>
           <div class="GerenST5">¥{{item.price}}</div>
@@ -84,7 +84,7 @@
     </div>
     <div>
       <div class="GerenST2">
-        <div class="GerenST3" v-for="(item,index) of image" :key="index">
+        <div class="GerenST3" v-for="(item,index) of image3" :key="index">
           <img :src="item.img" alt>
           <div class="GerenST4">{{item.title}}</div>
           <div class="GerenST5">¥{{item.price}}</div>
@@ -96,7 +96,7 @@
     </div>
     <div>
       <div class="GerenST2">
-        <div class="GerenST3" v-for="(item,index) of image" :key="index">
+        <div class="GerenST3" v-for="(item,index) of image4" :key="index">
           <img :src="item.img" alt>
           <div class="GerenST4">{{item.title}}</div>
           <div class="GerenST5">¥{{item.price}}</div>
@@ -124,11 +124,30 @@ export default {
         "../../../static/gerenS5.jpg",
         "../../../static/gerenS6.jpg"
       ],
-      image: [
-        { title: "拉拉手京东方", img: "../../../static/gerenS3.jpg", price: 350 },
-        { title: "国家开发地方", img: "../../../static/gerenS4.jpg", price: 120 },
-        { title: "的房交会的浮", img: "../../../static/gerenS5.jpg", price: 450 },
-        { title: "黄金价格的回", img: "../../../static/gerenS6.jpg", price: 680 }
+      image1: [
+        { title: "瑞吉餐厅港式点心自助", img: "../../../static/gerenS3.jpg", price: 350 },
+        { title: "京怀石 壬生小皿怀石套餐", img: "../../../static/gerenS4.jpg", price: 120 },
+        { title: "励骏网红双人下午茶", img: "../../../static/gerenS5.jpg", price: 450 },
+        { title: "霖舍 双人下午茶", img: "../../../static/gerenS6.jpg", price: 680 }
+      ],
+      image2: [
+        { title: "苏格兰威士忌", img: "../../../static/jiu1.jpg", price: 350 },
+        { title: "意大利起泡葡萄酒", img: "../../../static/jiu2.jpg", price: 120 },
+        { title: "法国西堤干白葡萄酒2015", img: "../../../static/jiu3.jpg", price: 450 },
+        { title: "白桃果实起泡酒", img: "../../../static/jiu4.jpg", price: 680 }
+      ],
+      
+      image3: [
+        { title: "Fine Goods KiKi 拌面", img: "../../../static/shi1.jpg", price: 99},
+        { title: "草莓酸奶球麦片500g", img: "../../../static/shi2.jpg", price: 35},
+        { title: "自然集海苔肉松", img: "../../../static/shi3.jpg", price: 110},
+        { title: "美国盐焗混合坚果", img: "../../../static/shi4.jpg", price: 125}
+      ],
+      image4: [
+        { title: "泡泡精灵除湿防潮袋", img: "../../../static/sheng1.jpg", price: 350 },
+        { title: "无硅油洗发水/洗护套装", img: "../../../static/sheng2.jpg", price: 120 },
+        { title: "小林制药 洁净干爽洗涤剂", img: "../../../static/sheng3.jpg", price: 450 },
+        { title: "MARCH 指甲边缘营养油", img: "../../../static/sheng4.jpg", price: 680 }
       ]
     };
   },

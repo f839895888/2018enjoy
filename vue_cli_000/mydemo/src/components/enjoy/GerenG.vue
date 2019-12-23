@@ -4,25 +4,23 @@
       <img src="../../../static/gerenG3.png" alt>
       <span>我的购物车</span>
       <span class="GerenG2" @click="delm">清空购物车</span>
+      <div></div>
     </div>
 
-    <div class="G-F">
+    <div class="G-F" v-for="(item,i) of list" :key="i" @click="check">
       <div style="margin:auto">
-        <van-checkbox v-model="checked" @change="itemchange"></van-checkbox>
+        <van-checkbox v-model="item.cb" @change="itemchange"></van-checkbox>
       </div>
       <div class="G-F1" @click="check">
         <div class="G-F2">
-          <img
-            src="https://img.yzcdn.cn/public_files/2017/10/24/2f9a36046449dafb8608e99990b3c205.jpeg"
-            alt
-          >
+          <img :src="item.pic" alt>
           <div class="G-F3">
-            <div style="font-size:12px;color:#323233;margin-bottom:3px;">进口香蕉</div>
-            <div style="font-size:12px;color:#323233;margin-bottom:3px;">约250g，2根</div>
-            <div style="font-size:12px;color:#ee0a24;margin-bottom:3px;">¥333</div>
+            <div style="font-size:12px;color:#323233;margin-bottom:3px;">{{item.title}}</div>
+            <div style="font-size:12px;color:#323233;margin-bottom:3px;">{{item.subtitle}}</div>
+            <div style="font-size:12px;color:#ee0a24;margin-bottom:3px;">¥{{item.price}}</div>
             <van-stepper
               class="a1"
-              v-model="value"
+              v-model="item.count"
               input-width="25px"
               button-size="20px"
               min="1"
@@ -31,20 +29,22 @@
           </div>
         </div>
         <div style="margin:auto 0">
-          <van-button round type="danger" size="mini" @click="delm">删除</van-button>
+          <van-button :data-id="item.id" round type="danger" size="mini" @click="del">删除</van-button>
         </div>
       </div>
     </div>
     <div style="width:100%;height:1px;"></div>
     <div>
       <van-tabbar v-model="active" class="G-T">
-        <div style="margin:auto 0">
-          <van-checkbox v-model="allcb">全选</van-checkbox>
+        <div class="G-T1">
+          <van-button style="margin-right:20px;" round type="danger" size="small" @click="delm">删除选中</van-button>
+          <input class="G-T2" type="checkbox" @change="selectAll" v-model="allcb">
+          <div>全选</div>
         </div>
         <div>
           <span>
             合计:
-            <span style="color:#ee0a24">¥ 0</span>
+            <span style="color:#ee0a24">¥{{total.toFixed(2)}}</span>
           </span>
           <van-button round type="danger" size="small">结算</van-button>
         </div>
@@ -58,7 +58,6 @@ import Tabbar from "./Tabbar.vue";
 export default {
   data() {
     return {
-      checked: false,
       active: 0,
       value: 1,
       allcb: false,
@@ -67,6 +66,15 @@ export default {
   },
   components: {
     tabbar: Tabbar
+  },
+  computed: {
+    total(){
+      var sum=0;
+     for(var p of this.list){
+        sum+=p.price*p.count;
+      }
+      return sum;
+    }
   },
   created() {
     this.loadMore();
@@ -77,7 +85,6 @@ export default {
         event.target.nodeName !== "BUTTON" &&
         event.target.nodeName !== "INPUT"
       ) {
-        this.checked = !this.checked;
       }
     },
     itemchange() {
@@ -103,49 +110,119 @@ export default {
       }
     },
     delm() {
-      Dialog.confirm({
-        title: "标题",
-        message: "弹窗内容"
-      })
-        .then(res=>{
-    //2:选择确认
-    //3:创建空字符串 "1,2,3"
-    var str = "";
-    //4:创建循环遍历list数组
-    //  判断如果当前对象cb值为true
-    //  将对象id拼接
-    for(var item of this.list){
-        if(item.cb){
-          str += item.id+","
-        }
-    }
-    //5:判断用户是否选中商品
-    //  提示请选择要删除商品
-    if(str.length==0){
-      this.$messagebox("请选择要删除商品");
-      Dialog({ message: "请选择要删除商品" })
-      return;
-    }
-    //0            启始下标 8,9,
-    //str.length-1 保存几个字符串
-    str = str.substring(0,str.length-1);
-    console.log(str);//!!!!!!
-    //6:创建url创建obj 10:28 
-    var url = "delm";
-    var obj = {id:str};
-    //7:发送ajax请求
-    this.axios.get(url,{params:obj}).then(res=>{
-      //console.log(res)
-    //8:再新加载购物列表 
-     this.loadMore();
-    //9:提示删除成功
-     this.$toast("删除成功")
-    })
-    }).catch(err=>{
-    })
+      //1:显示交互提示框，请用户再次确认
+      //  是否删除指定商品
+      this.$messagebox
+        .confirm("是否删除指定商品")
+        .then(res => {
+          //2:选择确认
+          //3:创建空字符串 "1,2,3"
+          var str = "";
+          //4:创建循环遍历list数组
+          //  判断如果当前对象cb值为true
+          //  将对象id拼接
+          for (var item of this.list) {
+            if (item.cb) {
+              str += item.id + ",";
+            }
+          }
+          //5:判断用户是否选中商品
+          //  提示请选择要删除商品
+          if (str.length == 0) {
+            this.$messagebox("请选择要删除商品");
+            return;
+          }
+          //0            启始下标 8,9,
+          //str.length-1 保存几个字符串
+          str = str.substring(0, str.length - 1);
+          console.log(str); //!!!!!!
+          //6:创建url创建obj 10:28
+          var url = "delm";
+          var obj = { id: str };
+          //7:发送ajax请求
+          this.axios.get(url, { params: obj }).then(res => {
+            //console.log(res)
+            //8:再新加载购物列表
+            this.loadMore();
+            //9:提示删除成功
+            this.$toast("删除成功");
+          });
+        })
+        .catch(err => {});
     },
-    loadMore(){
-      var url=""
+    selectAll(event) {
+      //1:添加参数event
+      //2:获取当前全选按钮状态
+      var all = event.target.checked;
+      //3:赋值所有商品cb
+      for (var item of this.list) {
+        item.cb = all;
+      }
+    },
+    del(event) {
+      //1:为删除按钮添加自定义属性//data-id 保存当前购物车商品id
+      //2:添加点击事件click del
+      //2.1:交互提示:是否删除商品
+      this.$messagebox
+        .confirm("是否删除指定商品")
+        .then(res => {
+          //回调函数 3~8
+          //3:获取当前商品id
+          var id = event.target.dataset.id;
+          //4:输出id
+          console.log(id);
+          //5:发送ajax请求
+          var url = "del";
+          var obj = { id };
+          this.axios.get(url, { params: obj }).then(res => {
+            //6:获取服务器端返回数据
+            if (res.data.code == 2) {
+              this.$router.push("/Login");
+            } else if (res.data.code == -1) {
+              this.$toast("删除失败");
+            } else {
+              this.$toast("删除成功");
+            }
+            this.loadMore();
+          });
+          //7:提示删除成功 17:17
+          //8:重新调用 loadMore
+        })
+        .catch(err => {
+          //取消
+        });
+    },
+    loadMore() {
+      //1:创建url
+      var url = "findcart";
+      //2:发送ajax请求获取购物车
+      this.axios.get(url).then(res => {
+        console.log(res.data);
+        if (res.data.code == -1) {
+          //提示交互提示框
+          this.$messagebox("消息", "请登录").then(res => {
+            //跳转登录组件
+            this.$router.push("/Login");
+          });
+        } else {
+          //(1)为每个商品添加状态
+          //res变量data属性data数组
+          var list = res.data.data;
+          for (var item of list) {
+            item.cb = false;
+          }
+          //(2)赋值
+          this.list = list;
+          // //(2.9)加载之前先清空
+          // this.$store.commit("clearCart");
+          // //(3)创建循环遍历数组
+          // for (var item of this.list) {
+          //   //(4)修改购物车数量
+          //   this.$store.commit("addCart");
+          // }
+        }
+      });
+      //3:将服务器返回数据保存list
     }
   }
 };
@@ -195,6 +272,9 @@ export default {
 .G-F2 img {
   width: 90px;
   height: 90px;
+  margin-left:8px;
+  margin-top:8px;
+  margin-bottom:5px;
 }
 .G-F3 {
   margin: auto 10px;
@@ -210,5 +290,16 @@ export default {
   padding-left: 5px;
   padding-right: 5px;
   background-color: #fff;
+}
+.G-T1 {
+  margin: auto 0;
+  display: flex;
+  line-height: 31px;
+  text-indent: 7px;
+}
+.G-T2 {
+  width: 20px;
+  height: 20px;
+  margin-top: 7px;
 }
 </style>
